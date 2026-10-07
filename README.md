@@ -32,8 +32,6 @@ qr/            QR code to the toolkit page
 
 Martina Castellucci. Diploma at Liceo Ferrari, BSc in Biotechnology, MSc in Bioinformatics at the University of Bologna. Thesis internship at Neotron Laboratories (Modena) on a decision support system for food contamination risk. Since October 2026, Product Specialist at [Onit](https://www.onit.it) in Cesena, working on healthcare data warehouses and dashboards.
 
-[GitHub](https://github.com/Martinaa1408)
-
 Data used in exercises and quizzes is made up for teaching.
 
 ## Licence

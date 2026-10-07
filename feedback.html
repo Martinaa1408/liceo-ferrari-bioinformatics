@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Feedback incontri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#F3F7F7;--surface:#FFFFFF;--ink:#10252C;--muted:#4E6870;--line:#D5E2E4;--accent:#1E9E86;--accent-ink:#FFFFFF}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0A1A20;--surface:#112A32;--ink:#EAF4F4;--muted:#9DB5BA;--line:#23434C;--accent:#2EC4A6;--accent-ink:#0A1A20}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Manrope",system-ui,sans-serif}
+.wrap{max-width:640px;margin:0 auto;padding:32px 16px 64px}
+.dna{display:flex;gap:5px;margin-bottom:16px}.dna i{width:14px;height:14px;display:block}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+h1{font-weight:800;font-size:clamp(30px,6vw,42px);line-height:1.1;margin:.3em 0 .3em}
+.lead{color:var(--muted);margin:0 0 24px}
+fieldset{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:16px 18px;margin:0 0 12px;min-width:0}
+legend{font-weight:700;padding:0 6px;font-size:16px}
+.hint{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+.opts{display:grid;gap:8px;margin-top:10px}
+.opts label{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;cursor:pointer}
+.opts label:has(input:checked){border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.opts input{accent-color:var(--accent);width:18px;height:18px;flex:none}
+.scale{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.scale label{position:relative;display:grid;place-items:center;min-width:44px;height:44px;border:1.5px solid var(--line);border-radius:10px;cursor:pointer;font-weight:700;font-variant-numeric:tabular-nums}
+.scale input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.scale label:has(input:checked){background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.scale label:has(input:focus-visible){outline:3px solid var(--accent);outline-offset:2px}
+.ends{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-top:6px}
+textarea,input[type=email]{width:100%;margin-top:10px;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px}
+textarea{min-height:88px;resize:vertical}
+textarea:focus,input[type=email]:focus{outline:3px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.section{margin:28px 0 10px;font-weight:800;font-size:20px}
+button{font:800 16px "Manrope",system-ui,sans-serif;background:var(--accent);color:var(--accent-ink);border:0;border-radius:10px;padding:14px 22px;cursor:pointer;margin-top:8px;width:100%}
+button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.foot{color:var(--muted);font-size:14px;margin-top:20px}
+a{color:var(--accent);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="dna" aria-hidden="true"><i style="background:#2EC4A6"></i><i style="background:#4F8FE0"></i><i style="background:#F2B33D"></i><i style="background:#F2664A"></i></div>
+  <div class="eyebrow">Liceo Scientifico "Enzo Ferrari", Cesenatico</div>
+  <h1>Com'è andata?</h1>
+  <p class="lead">Il modulo è anonimo e richiede 2 minuti. Le risposte servono a migliorare i prossimi incontri.</p>
+
+  <form id="f" action="https://formsubmit.co/martycastellucci@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="Feedback incontri Liceo Ferrari">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://martinaa1408.github.io/liceo-ferrari-bioinformatics/grazie.html">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <input type="hidden" name="Cosa ti è piaciuto" id="liked">
+
+    <fieldset>
+      <legend>1. A quale incontro hai partecipato?</legend>
+      <div class="opts">
+        <label><input type="radio" name="Incontro" value="Incontro 1" required> Incontro 1: dai dati biologici agli algoritmi</label>
+        <label><input type="radio" name="Incontro" value="Incontro 2"> Incontro 2: come impara un computer</label>
+        <label><input type="radio" name="Incontro" value="Entrambi"> Entrambi</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>2. Indirizzo</legend>
+      <div class="opts">
+        <label><input type="radio" name="Indirizzo" value="Scienze applicate"> Scienze applicate</label>
+        <label><input type="radio" name="Indirizzo" value="Tradizionale"> Tradizionale</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>3. Che voto dai all'incontro?</legend>
+      <div class="scale" data-name="Voto (1-10)" data-max="10"></div>
+      <div class="ends"><span>1 = da rifare</span><span>10 = ottimo</span></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>4. Quanto erano chiare le spiegazioni?</legend>
+      <div class="scale" data-name="Chiarezza (1-5)" data-max="5"></div>
+      <div class="ends"><span>1 = per niente</span><span>5 = chiarissime</span></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>5. Cosa ti è piaciuto di più?</legend>
+      <span class="hint">Anche più risposte.</span>
+      <div class="opts" id="likes">
+        <label><input type="checkbox" value="Quiz a squadre"> Quiz a squadre</label>
+        <label><input type="checkbox" value="Sfide"> Sfide (allineamento, BLAST, modello, soglia)</label>
+        <label><input type="checkbox" value="Codice dal vivo"> Codice dal vivo</label>
+        <label><input type="checkbox" value="Caso reale Neotron"> Caso reale Neotron</label>
+        <label><input type="checkbox" value="SQL e sanità"> SQL e dati della sanità</label>
+        <label><input type="checkbox" value="Università e lavoro"> Parte su università e lavoro</label>
+        <label><input type="checkbox" value="Idee per l'orale"> Idee per l'orale</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>6. Dopo gli incontri, quanto ti interessa la bioinformatica o l'analisi dei dati?</legend>
+      <div class="scale" data-name="Interesse (1-5)" data-max="5"></div>
+      <div class="ends"><span>1 = per niente</span><span>5 = moltissimo</span></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>7. Stai pensando a un corso di laurea in quest'area?</legend>
+      <div class="opts">
+        <label><input type="radio" name="Laurea in quest'area" value="Sì"> Sì</label>
+        <label><input type="radio" name="Laurea in quest'area" value="Forse"> Forse</label>
+        <label><input type="radio" name="Laurea in quest'area" value="No"> No</label>
+        <label><input type="radio" name="Laurea in quest'area" value="Non ho ancora deciso"> Non ho ancora deciso niente</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>8. Cosa cambieresti?</legend>
+      <textarea name="Cosa cambieresti"></textarea>
+    </fieldset>
+
+    <div class="section">Hai una domanda per Martina?</div>
+    <fieldset>
+      <legend>9. La tua domanda</legend>
+      <span class="hint">Università, lavoro, TOLC, qualcosa che non era chiaro.</span>
+      <textarea name="Domanda"></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend>10. Email per una risposta personale (facoltativa)</legend>
+      <span class="hint">Lasciala solo se vuoi essere ricontattato. Se no, la risposta arriva tramite i tuoi docenti.</span>
+      <input type="email" name="Email (facoltativa)" autocomplete="email">
+    </fieldset>
+
+    <button type="submit">Invia</button>
+  </form>
+  <p class="foot"><a href="./">Torna al toolkit</a></p>
+</div>
+<script>
+document.querySelectorAll('.scale').forEach(function(box){
+  var n=+box.dataset.max, name=box.dataset.name;
+  for(var i=1;i<=n;i++){
+    var l=document.createElement('label'), r=document.createElement('input'), s=document.createElement('span');
+    r.type='radio'; r.name=name; r.value=i; r.required=true; r.setAttribute('aria-label',name+': '+i);
+    s.textContent=i; l.appendChild(r); l.appendChild(s); box.appendChild(l);
+  }
+});
+document.getElementById('f').addEventListener('submit',function(){
+  var v=[].map.call(document.querySelectorAll('#likes input:checked'),function(c){return c.value});
+  document.getElementById('liked').value=v.join(', ')||'-';
+});
+</script>
+</body>
+</html>

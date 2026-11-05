@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Code, quizzes and materials from the two bioinformatics sessions at Liceo Enzo Ferrari, Cesenatico.">
-<title>Bioinformatics Toolkit</title>
+<meta name="description" content="Sfide, aiuti, codici e quiz dei due incontri di bioinformatica al Liceo Enzo Ferrari di Cesenatico.">
+<title>Toolkit di bioinformatica</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
@@ -77,464 +77,330 @@ pre{margin:0;padding:14px 16px;overflow-x:auto;color:var(--code-ink);font-size:1
 .link span{font-size:14px;color:var(--muted)}
 footer{margin-top:56px;color:var(--muted);font-size:14px;border-top:1px solid var(--line);padding-top:16px}
 @media (prefers-reduced-motion:no-preference){.opt,.copy,.link{transition:border-color .15s,background .15s}}
+
+.simple{background:var(--surface);border-left:4px solid var(--accent);border-radius:8px;padding:12px 16px;margin:12px 0;max-width:70ch}
+.simple b{color:var(--accent)}
+.out{background:#06151a;color:#9fe3d3;font-family:var(--mono);font-size:13px;padding:10px 16px;border-top:1px solid #1d3a44;white-space:pre-wrap;overflow-x:auto}
+.out::before{content:"Risultato";display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7FA0A7;font-weight:600;margin-bottom:4px}
+.lines{margin:.4em 0 0;padding-left:1.2em;color:var(--ink);max-width:70ch}
+.lines li{margin:.25em 0}
+details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 16px;margin-top:10px}
+details>summary{cursor:pointer;font-weight:700}
+details[open]>summary{margin-bottom:8px}
+details.hint>summary{color:var(--g)}
+details.sol>summary{color:var(--t)}
+.badge-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:14px}
+.badge-row img{height:64px;width:auto;max-width:100%}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:6px;background:var(--surface);border:1px solid var(--line);color:var(--muted);margin-right:6px}
+.tag.deep{color:var(--t);border-color:var(--t)}
+.tag.lat{color:var(--c);border-color:var(--c)}
+table.t{border-collapse:collapse;margin:10px 0;font-size:14px;display:block;overflow-x:auto;max-width:100%}
+table.t th,table.t td{border:1px solid var(--line);padding:5px 10px;text-align:center;white-space:nowrap}
+table.t th{background:var(--surface)}
+table.t td.hl{background:var(--accent);color:var(--bg);font-weight:800}
+table.t td.l,table.t th.l{text-align:left}
+.card2{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-top:16px}
+.card2 h3{margin:0 0 6px;font-size:20px}
+.dl{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:14px}
+.dl .link{cursor:default}
+.note{font-size:14px;color:var(--muted);max-width:70ch}
+.deepwrap{border-top:3px dashed var(--line);margin-top:48px;padding-top:6px}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--accent);color:var(--bg);padding:10px 16px;border-radius:8px;font-weight:800;z-index:100;text-decoration:none}
+.skip:focus{left:8px}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{zoom:var(--zoom,1)}
+.when{margin:14px 0 0;display:grid;gap:6px;max-width:62ch}
+.when div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 14px}
+.when b{color:var(--accent)}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;font-size:14px;align-items:center}
+.tools span{color:var(--muted)}
+.tools button{font:600 14px var(--body);background:var(--surface);color:var(--ink);border:1.5px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer;min-height:36px}
+.tools button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+.papers{display:grid;gap:10px;margin-top:12px}
+.papers .p{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.papers .p b{display:block}
+.papers .p span{color:var(--muted);font-size:14px}
+.contact{background:var(--surface);border:2px solid var(--accent);border-radius:16px;padding:22px;margin-top:16px;text-align:center}
+.contact img{height:72px;width:auto;max-width:100%}
+.contact .bigbtn{display:inline-block;text-decoration:none;margin:6px 4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+
+.hub{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:12px}
+.hub a{display:block;text-decoration:none;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--ink)}
+.hub a b{display:block;font-size:18px;color:var(--accent)}
+.hub a span{font-size:14px;color:var(--muted)}
+.hub a:hover,.hub a:focus-visible{border-color:var(--accent)}
+.hub a.hot{border-color:var(--g)}
+.hub a.hot b{color:var(--g)}
+.cards4{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:14px}
+.cards4 .card2{margin-top:0}
+.go{margin:10px 0 0;font-weight:700}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.chips a{display:inline-block;padding:6px 14px;border:1.5px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);background:var(--surface);font-weight:600;min-height:36px}
+.chips a:hover,.chips a:focus-visible{border-color:var(--accent);color:var(--accent)}
+.more{border-color:var(--accent)}
+.grp{margin-top:26px}
+.grp h3{margin:0 0 4px;font-size:20px}
+.grp .note{margin:0 0 6px}
+.bigcard{background:var(--surface);border:2px solid var(--g);border-radius:16px;padding:22px;margin-top:14px}
+section{scroll-margin-top:64px}
+main p a,main li a,main details a,.papers a{color:var(--accent);font-weight:600}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Vai al contenuto</a>
 <div class="wrap">
 <header>
   <div class="dna" aria-hidden="true"><i style="background:var(--a)"></i><i style="background:var(--c)"></i><i style="background:var(--g)"></i><i style="background:var(--t)"></i></div>
-  <div class="eyebrow">Liceo Scientifico "Enzo Ferrari", Cesenatico</div>
-  <h1>Bioinformatics Toolkit</h1>
-  <p class="lead">All the code, quizzes and links from the two sessions on bioinformatics and data science. Run the code, change it, break it, run it again.</p>
-  <div class="seq" aria-label="Start of the human HBB gene"><span class="A">A</span><span class="T">T</span><span class="G">G</span><span class="G">G</span><span class="T">T</span><span class="G">G</span><span class="C">C</span><span class="A">A</span><span class="C">C</span><span class="C">C</span><span class="T">T</span><span class="G">G</span><span class="A">A</span><span class="C">C</span><span class="T">T</span><span class="C">C</span><span class="C">C</span><span class="T">T</span><span class="G">G</span><span class="A">A</span><span class="G">G</span><span class="G">G</span><span class="A">A</span><span class="G">G</span><span class="A">A</span><span class="A">A</span><span class="G">G</span></div>
-<p style="margin-top:14px;color:var(--muted)">Versione semplificata in italiano: <a href="it/" style="color:var(--accent);font-weight:600">Toolkit di bioinformatica</a>. My open tools: <a href="https://martinaa1408.github.io/lab/" style="color:var(--accent);font-weight:600" target="_blank" rel="noopener">Lab · Martina Castellucci</a>.</p>
+  <div class="eyebrow">Liceo Scientifico «Enzo Ferrari», Cesenatico</div>
+  <h1>Toolkit di bioinformatica</h1>
+  <p class="lead">Sfide, aiuti, codici e quiz dei due incontri. Non serve saper programmare.</p>
+  <div class="seq" aria-label="Inizio del gene umano HBB"><span class="A">A</span><span class="T">T</span><span class="G">G</span><span class="G">G</span><span class="T">T</span><span class="G">G</span><span class="C">C</span><span class="A">A</span><span class="C">C</span><span class="C">C</span><span class="T">T</span><span class="G">G</span><span class="A">A</span><span class="C">C</span><span class="T">T</span><span class="C">C</span><span class="C">C</span><span class="T">T</span><span class="G">G</span><span class="A">A</span><span class="G">G</span><span class="G">G</span><span class="A">A</span><span class="G">G</span><span class="A">A</span><span class="A">A</span><span class="G">G</span></div>
+  <div class="when" aria-label="Date degli incontri"><div><b>Incontro 1</b> · sabato 21 novembre 2026, 8:00-11:00</div><div><b>Incontro 2</b> · sabato 28 novembre 2026, 10:00-13:00</div></div>
+  <div class="tools" role="group" aria-label="Leggibilità"><span>Testo:</span><button type="button" data-zoom="0.9" aria-pressed="false">A-</button><button type="button" data-zoom="1" aria-pressed="true">A</button><button type="button" data-zoom="1.2" aria-pressed="false">A+</button><span>Tema:</span><button type="button" data-theme-set="auto" aria-pressed="true">Automatico</button><button type="button" data-theme-set="light" aria-pressed="false">Chiaro</button><button type="button" data-theme-set="dark" aria-pressed="false">Scuro</button></div>
 </header>
-
-<nav aria-label="Sections"><div class="in"><a href="it/">Italiano</a><a href="https://martinaa1408.github.io/lab/" target="_blank" rel="noopener">Lab</a><a href="#start">Start</a><a href="#code">Code</a><a href="#quiz">Quiz</a><a href="#materials">Materials</a><a href="#exam">Oral exam</a><a href="#links">Links</a><a href="#feedback">Feedback</a><a href="#about">About me</a><a href="#card" data-open-card>Answer card</a></div></nav>
-
-<section id="start">
-  <h2>How to run it</h2>
-  <p>No installation. You only need a browser and a Google account.</p>
-  <ol class="steps">
-    <li><a href="https://colab.research.google.com/github/Martinaa1408/liceo-ferrari-bioinformatics/blob/main/notebooks/Toolkit_studenti.ipynb" target="_blank" rel="noopener">Open the toolkit notebook in Google Colab</a>. It has all the code below.</li>
-    <li>Sign in with a Google account and press <strong>Run all</strong> (or <strong>Shift + Enter</strong> on each cell).</li>
-    <li>Change a sequence or a number and run the cell again. Nothing you do can break the original.</li>
-  </ol>
-  <p style="margin-top:14px;color:var(--muted)">No Colab? Open <a href="https://colab.research.google.com/#create=true" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600">a new notebook</a>, then use the button.</p>
-  <p style="margin-top:14px"><button class="bigbtn" id="copyall" style="margin-left:6px">Copy all the code</button> <span class="score" id="copyallmsg" aria-live="polite"></span></p>
-  <pre id="allcode" hidden>dna = &quot;ATGGTGCACCTGACTCCTGAGGAGAAG&quot;   # start of the human beta-globin gene (HBB)
-
-print(&quot;Length:&quot;, len(dna))
-for base in &quot;ACGT&quot;:
-    print(base, dna.count(base))
-
-def gc_content(seq):
-    gc = seq.count(&quot;G&quot;) + seq.count(&quot;C&quot;)
-    return gc / len(seq)
-
-print(&quot;GC content:&quot;, round(gc_content(dna), 2))
-
-bases = &quot;TCAG&quot;
-amino = (&quot;FFLLSSSSYY**CC*W&quot;
-         &quot;LLLLPPPPHHQQRRRR&quot;
-         &quot;IIIMTTTTNNKKSSRR&quot;
-         &quot;VVVVAAAADDEEGGGG&quot;)
-codons = [a + b + c for a in bases for b in bases for c in bases]
-code = dict(zip(codons, amino))
-
-def translate(seq):
-    protein = &quot;&quot;
-    for i in range(0, len(seq) - 2, 3):
-        protein += code[seq[i:i + 3]]
-    return protein
-
-print(len(code), &quot;codons&quot;)
-print(translate(dna))
-
-def mutate(seq, position, new_base):
-    return seq[:position] + new_base + seq[position + 1:]
-
-sickle = mutate(dna, 19, &quot;T&quot;)
-
-print(translate(dna), &quot;healthy&quot;)
-print(translate(sickle), &quot;sickle cell&quot;)
-
-# Try a synonymous mutation: change the third letter of codon 2 (GTG -&gt; GTA)
-silent = mutate(dna, 5, &quot;A&quot;)
-print(translate(silent), &quot;same protein?&quot;, translate(silent) == translate(dna))
-
-def needleman_wunsch(a, b, match=1, mismatch=-1, gap=-2):
-    n, m = len(a), len(b)
-    F = [[0] * (m + 1) for _ in range(n + 1)]
-    for i in range(n + 1):
-        F[i][0] = i * gap
-    for j in range(m + 1):
-        F[0][j] = j * gap
-    for i in range(1, n + 1):
-        for j in range(1, m + 1):
-            s = match if a[i - 1] == b[j - 1] else mismatch
-            F[i][j] = max(F[i - 1][j - 1] + s, F[i - 1][j] + gap, F[i][j - 1] + gap)
-    # traceback from the bottom-right cell
-    top, bottom, i, j = &quot;&quot;, &quot;&quot;, n, m
-    while i &gt; 0 or j &gt; 0:
-        s = match if i &gt; 0 and j &gt; 0 and a[i - 1] == b[j - 1] else mismatch
-        if i &gt; 0 and j &gt; 0 and F[i][j] == F[i - 1][j - 1] + s:
-            top, bottom, i, j = a[i - 1] + top, b[j - 1] + bottom, i - 1, j - 1
-        elif i &gt; 0 and F[i][j] == F[i - 1][j] + gap:
-            top, bottom, i = a[i - 1] + top, &quot;-&quot; + bottom, i - 1
-        else:
-            top, bottom, j = &quot;-&quot; + top, b[j - 1] + bottom, j - 1
-    return F, F[n][m], top, bottom
-
-def show(a, b):
-    F, score, top, bottom = needleman_wunsch(a, b)
-    print(&quot;     &quot; + &quot;&quot;.join(f&quot;{c:&gt;4}&quot; for c in &quot;-&quot; + b))
-    for label, row in zip(&quot;-&quot; + a, F):
-        print(f&quot;{label:&gt;4} &quot; + &quot;&quot;.join(f&quot;{v:&gt;4}&quot; for v in row))
-    print(&quot;\nScore:&quot;, score)
-    print(top)
-    print(bottom)
-
-show(&quot;GATC&quot;, &quot;GAC&quot;)
-print()
-show(&quot;GAATTC&quot;, &quot;GATTA&quot;)
-
-import pandas as pd
-from sklearn.tree import DecisionTreeClassifier, export_text
-
-train = pd.DataFrame({
-    &quot;food&quot;:      [&quot;Maize&quot;, &quot;Maize&quot;, &quot;Maize&quot;, &quot;Maize&quot;, &quot;Rice&quot;, &quot;Rice&quot;, &quot;Swordfish&quot;, &quot;Swordfish&quot;, &quot;Apple&quot;, &quot;Apple&quot;, &quot;Maize&quot;, &quot;Rice&quot;],
-    &quot;origin&quot;:    [&quot;non-EU&quot;, &quot;non-EU&quot;, &quot;EU&quot;, &quot;EU&quot;, &quot;non-EU&quot;, &quot;EU&quot;, &quot;non-EU&quot;, &quot;EU&quot;, &quot;EU&quot;, &quot;non-EU&quot;, &quot;non-EU&quot;, &quot;non-EU&quot;],
-    &quot;season&quot;:    [&quot;summer&quot;, &quot;winter&quot;, &quot;summer&quot;, &quot;winter&quot;, &quot;summer&quot;, &quot;winter&quot;, &quot;summer&quot;, &quot;winter&quot;, &quot;summer&quot;, &quot;winter&quot;, &quot;summer&quot;, &quot;winter&quot;],
-    &quot;retested&quot;:  [&quot;yes&quot;, &quot;yes&quot;, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, &quot;yes&quot;, &quot;yes&quot;, &quot;no&quot;, &quot;no&quot;, &quot;yes&quot;, &quot;no&quot;],
-    &quot;non_compliant&quot;: [&quot;yes&quot;, &quot;yes&quot;, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, &quot;yes&quot;, &quot;yes&quot;, &quot;no&quot;, &quot;no&quot;, &quot;yes&quot;, &quot;no&quot;],
-})
-test = pd.DataFrame({
-    &quot;food&quot;:   [&quot;Maize&quot;, &quot;Swordfish&quot;, &quot;Rice&quot;, &quot;Maize&quot;, &quot;Apple&quot;, &quot;Maize&quot;],
-    &quot;origin&quot;: [&quot;non-EU&quot;, &quot;EU&quot;, &quot;EU&quot;, &quot;EU&quot;, &quot;non-EU&quot;, &quot;non-EU&quot;],
-    &quot;season&quot;: [&quot;summer&quot;, &quot;summer&quot;, &quot;summer&quot;, &quot;summer&quot;, &quot;summer&quot;, &quot;winter&quot;],
-    &quot;non_compliant&quot;: [&quot;yes&quot;, &quot;yes&quot;, &quot;no&quot;, &quot;yes&quot;, &quot;no&quot;, &quot;no&quot;],
-})
-y = train[&quot;non_compliant&quot;]
-
-for cols in ([&quot;food&quot;, &quot;origin&quot;, &quot;season&quot;, &quot;retested&quot;], [&quot;food&quot;, &quot;origin&quot;, &quot;season&quot;]):
-    X = pd.get_dummies(train[cols])
-    model = DecisionTreeClassifier(random_state=0).fit(X, y)
-    print(&quot;Columns:&quot;, cols)
-    print(export_text(model, feature_names=list(X.columns)))
-
-X_test = pd.get_dummies(test[cols]).reindex(columns=X.columns, fill_value=False)
-test[&quot;prediction&quot;] = model.predict(X_test)
-print(test)
-print(&quot;Correct:&quot;, (test[&quot;prediction&quot;] == test[&quot;non_compliant&quot;]).sum(), &quot;out of&quot;, len(test))
-
-probability = [0.92, 0.85, 0.78, 0.71, 0.66, 0.61, 0.55, 0.52, 0.47, 0.44,
-               0.38, 0.35, 0.31, 0.27, 0.22, 0.18, 0.14, 0.11, 0.07, 0.04]
-risky = [1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
-CHECK, MISSED = 200, 5000   # euro
-
-for threshold in [0.3, 0.4, 0.5, 0.7]:
-    checked = [p &gt;= threshold for p in probability]
-    tp = sum(c and r for c, r in zip(checked, risky))
-    missed = sum(risky) - tp
-    n_checks = sum(checked)
-    cost = n_checks * CHECK + missed * MISSED
-    print(f&quot;threshold {threshold}: {n_checks:2} checks, recall {tp / sum(risky):.0%}, &quot;
-          f&quot;precision {tp / n_checks:.0%}, missed {missed}, cost {cost} euro&quot;)
-
-import sqlite3
-
-db = sqlite3.connect(&quot;:memory:&quot;)   # a small database that lives only in memory
-db.executescript(&quot;&quot;&quot;
-CREATE TABLE hospitals (id INTEGER PRIMARY KEY, name TEXT, region TEXT);
-CREATE TABLE reports   (id INTEGER PRIMARY KEY, hospital_id INTEGER, area TEXT, signed INTEGER);
-&quot;&quot;&quot;)
-db.executemany(&quot;INSERT INTO hospitals VALUES (?, ?, ?)&quot;,
-               [(1, &quot;Hospital A&quot;, &quot;Emilia-Romagna&quot;), (2, &quot;Hospital B&quot;, &quot;Puglia&quot;)])
-
-# Made-up data. Hospital A: 100 reports, 90 signed. Hospital B: 900 reports, 450 signed.
-reports = []
-for i in range(100):
-    reports.append((1, &quot;Radiology&quot; if i &lt; 40 else &quot;Lab&quot;, 1 if i &lt; 90 else 0))
-for i in range(900):
-    reports.append((2, &quot;Radiology&quot; if i &lt; 300 else &quot;Lab&quot;, 1 if i &lt; 450 else 0))
-db.executemany(&quot;INSERT INTO reports (hospital_id, area, signed) VALUES (?, ?, ?)&quot;, reports)
-
-query = &quot;&quot;&quot;
-SELECT h.name,
-       COUNT(*)                                   AS reports,
-       SUM(r.signed)                              AS signed,
-       ROUND(100.0 * SUM(r.signed) / COUNT(*), 1) AS signed_pct
-FROM reports r
-JOIN hospitals h ON r.hospital_id = h.id
-GROUP BY h.name;
-&quot;&quot;&quot;
-rows = db.execute(query).fetchall()
-for row in rows:
-    print(row)
-
-# The trap: the average of the two percentages is not the share for the whole group
-pcts = [row[3] for row in rows]
-print(&quot;Average of the percentages:&quot;, sum(pcts) / len(pcts), &quot;%&quot;)
-total = db.execute(&quot;SELECT ROUND(100.0 * SUM(signed) / COUNT(*), 1) FROM reports&quot;).fetchone()[0]
-print(&quot;Real share for the group:&quot;, total, &quot;%&quot;)</pre>
-</section>
-
-<section id="code">
-  <h2>The code, step by step</h2>
-  <p>Only what we did in class: the live demos and the challenges. Each block depends on the ones above it.</p>
-  <section class="snip" id="s0"><h3>1. DNA is text</h3><div class="qmeta" style="margin:-2px 0 4px">Session 1 · live coding, slide 38</div><p>A DNA sequence is a string: Python can measure it, count letters and compute the GC content.</p><div class="cell"><div class="cellbar"><span>Python</span><button class="copy" data-target="c0_0">Copy</button></div><pre id="c0_0"><code>dna = &quot;ATGGTGCACCTGACTCCTGAGGAGAAG&quot;   # start of the human beta-globin gene (HBB)
-
-print(&quot;Length:&quot;, len(dna))
-for base in &quot;ACGT&quot;:
-    print(base, dna.count(base))
-
-def gc_content(seq):
-    gc = seq.count(&quot;G&quot;) + seq.count(&quot;C&quot;)
-    return gc / len(seq)
-
-print(&quot;GC content:&quot;, round(gc_content(dna), 2))</code></pre></div></section><section class="snip" id="s2"><h3>2. From DNA to protein</h3><div class="qmeta" style="margin:-2px 0 4px">Session 1 · live coding, slide 39</div><p>The genetic code is a lookup table: 64 codons, 20 amino acids and 3 stop signals (<code>*</code>). Each line of <code>amino</code> is one block of the textbook table (first base T, C, A, G).</p><div class="cell"><div class="cellbar"><span>Python</span><button class="copy" data-target="c2_0">Copy</button></div><pre id="c2_0"><code>bases = &quot;TCAG&quot;
-amino = (&quot;FFLLSSSSYY**CC*W&quot;
-         &quot;LLLLPPPPHHQQRRRR&quot;
-         &quot;IIIMTTTTNNKKSSRR&quot;
-         &quot;VVVVAAAADDEEGGGG&quot;)
-codons = [a + b + c for a in bases for b in bases for c in bases]
-code = dict(zip(codons, amino))
-
-def translate(seq):
-    protein = &quot;&quot;
-    for i in range(0, len(seq) - 2, 3):
-        protein += code[seq[i:i + 3]]
-    return protein
-
-print(len(code), &quot;codons&quot;)
-print(translate(dna))</code></pre></div></section><section class="snip" id="s3"><h3>3. Mutations</h3><div class="qmeta" style="margin:-2px 0 4px">Session 1 · live coding, slide 40</div><p>One letter changes, the protein changes. Codon 7 <code>GAG</code> becomes <code>GTG</code>: glutamic acid (E) becomes valine (V). This is the variant behind sickle cell disease.</p><div class="cell"><div class="cellbar"><span>Python</span><button class="copy" data-target="c3_0">Copy</button></div><pre id="c3_0"><code>def mutate(seq, position, new_base):
-    return seq[:position] + new_base + seq[position + 1:]
-
-sickle = mutate(dna, 19, &quot;T&quot;)
-
-print(translate(dna), &quot;healthy&quot;)
-print(translate(sickle), &quot;sickle cell&quot;)
-
-# Try a synonymous mutation: change the third letter of codon 2 (GTG -&gt; GTA)
-silent = mutate(dna, 5, &quot;A&quot;)
-print(translate(silent), &quot;same protein?&quot;, translate(silent) == translate(dna))</code></pre></div></section><section class="snip" id="s4"><h3>4. Needleman-Wunsch alignment</h3><div class="qmeta" style="margin:-2px 0 4px">Session 1 · Challenge A</div><p>The grid from Challenge A, filled by the computer. Match +1, mismatch -1, gap -2. The function returns the grid, the best score and one best alignment.</p><div class="cell"><div class="cellbar"><span>Python</span><button class="copy" data-target="c4_0">Copy</button></div><pre id="c4_0"><code>def needleman_wunsch(a, b, match=1, mismatch=-1, gap=-2):
-    n, m = len(a), len(b)
-    F = [[0] * (m + 1) for _ in range(n + 1)]
-    for i in range(n + 1):
-        F[i][0] = i * gap
-    for j in range(m + 1):
-        F[0][j] = j * gap
-    for i in range(1, n + 1):
-        for j in range(1, m + 1):
-            s = match if a[i - 1] == b[j - 1] else mismatch
-            F[i][j] = max(F[i - 1][j - 1] + s, F[i - 1][j] + gap, F[i][j - 1] + gap)
-    # traceback from the bottom-right cell
-    top, bottom, i, j = &quot;&quot;, &quot;&quot;, n, m
-    while i &gt; 0 or j &gt; 0:
-        s = match if i &gt; 0 and j &gt; 0 and a[i - 1] == b[j - 1] else mismatch
-        if i &gt; 0 and j &gt; 0 and F[i][j] == F[i - 1][j - 1] + s:
-            top, bottom, i, j = a[i - 1] + top, b[j - 1] + bottom, i - 1, j - 1
-        elif i &gt; 0 and F[i][j] == F[i - 1][j] + gap:
-            top, bottom, i = a[i - 1] + top, &quot;-&quot; + bottom, i - 1
-        else:
-            top, bottom, j = &quot;-&quot; + top, b[j - 1] + bottom, j - 1
-    return F, F[n][m], top, bottom
-
-def show(a, b):
-    F, score, top, bottom = needleman_wunsch(a, b)
-    print(&quot;     &quot; + &quot;&quot;.join(f&quot;{c:&gt;4}&quot; for c in &quot;-&quot; + b))
-    for label, row in zip(&quot;-&quot; + a, F):
-        print(f&quot;{label:&gt;4} &quot; + &quot;&quot;.join(f&quot;{v:&gt;4}&quot; for v in row))
-    print(&quot;\nScore:&quot;, score)
-    print(top)
-    print(bottom)
-
-show(&quot;GATC&quot;, &quot;GAC&quot;)
-print()
-show(&quot;GAATTC&quot;, &quot;GATTA&quot;)</code></pre></div></section><section class="snip" id="s7"><h3>5. A decision tree learns a rule</h3><div class="qmeta" style="margin:-2px 0 4px">Session 2 · Challenge C and live demo</div><p>The made-up data from Challenge C. With the column <code>retested</code> the model cheats (data leakage). Without it, it finds the rule on its own.</p><div class="cell"><div class="cellbar"><span>Python</span><button class="copy" data-target="c7_0">Copy</button></div><pre id="c7_0"><code>import pandas as pd
-from sklearn.tree import DecisionTreeClassifier, export_text
-
-train = pd.DataFrame({
-    &quot;food&quot;:      [&quot;Maize&quot;, &quot;Maize&quot;, &quot;Maize&quot;, &quot;Maize&quot;, &quot;Rice&quot;, &quot;Rice&quot;, &quot;Swordfish&quot;, &quot;Swordfish&quot;, &quot;Apple&quot;, &quot;Apple&quot;, &quot;Maize&quot;, &quot;Rice&quot;],
-    &quot;origin&quot;:    [&quot;non-EU&quot;, &quot;non-EU&quot;, &quot;EU&quot;, &quot;EU&quot;, &quot;non-EU&quot;, &quot;EU&quot;, &quot;non-EU&quot;, &quot;EU&quot;, &quot;EU&quot;, &quot;non-EU&quot;, &quot;non-EU&quot;, &quot;non-EU&quot;],
-    &quot;season&quot;:    [&quot;summer&quot;, &quot;winter&quot;, &quot;summer&quot;, &quot;winter&quot;, &quot;summer&quot;, &quot;winter&quot;, &quot;summer&quot;, &quot;winter&quot;, &quot;summer&quot;, &quot;winter&quot;, &quot;summer&quot;, &quot;winter&quot;],
-    &quot;retested&quot;:  [&quot;yes&quot;, &quot;yes&quot;, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, &quot;yes&quot;, &quot;yes&quot;, &quot;no&quot;, &quot;no&quot;, &quot;yes&quot;, &quot;no&quot;],
-    &quot;non_compliant&quot;: [&quot;yes&quot;, &quot;yes&quot;, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, &quot;yes&quot;, &quot;yes&quot;, &quot;no&quot;, &quot;no&quot;, &quot;yes&quot;, &quot;no&quot;],
-})
-test = pd.DataFrame({
-    &quot;food&quot;:   [&quot;Maize&quot;, &quot;Swordfish&quot;, &quot;Rice&quot;, &quot;Maize&quot;, &quot;Apple&quot;, &quot;Maize&quot;],
-    &quot;origin&quot;: [&quot;non-EU&quot;, &quot;EU&quot;, &quot;EU&quot;, &quot;EU&quot;, &quot;non-EU&quot;, &quot;non-EU&quot;],
-    &quot;season&quot;: [&quot;summer&quot;, &quot;summer&quot;, &quot;summer&quot;, &quot;summer&quot;, &quot;summer&quot;, &quot;winter&quot;],
-    &quot;non_compliant&quot;: [&quot;yes&quot;, &quot;yes&quot;, &quot;no&quot;, &quot;yes&quot;, &quot;no&quot;, &quot;no&quot;],
-})
-y = train[&quot;non_compliant&quot;]
-
-for cols in ([&quot;food&quot;, &quot;origin&quot;, &quot;season&quot;, &quot;retested&quot;], [&quot;food&quot;, &quot;origin&quot;, &quot;season&quot;]):
-    X = pd.get_dummies(train[cols])
-    model = DecisionTreeClassifier(random_state=0).fit(X, y)
-    print(&quot;Columns:&quot;, cols)
-    print(export_text(model, feature_names=list(X.columns)))
-
-X_test = pd.get_dummies(test[cols]).reindex(columns=X.columns, fill_value=False)
-test[&quot;prediction&quot;] = model.predict(X_test)
-print(test)
-print(&quot;Correct:&quot;, (test[&quot;prediction&quot;] == test[&quot;non_compliant&quot;]).sum(), &quot;out of&quot;, len(test))</code></pre></div></section><section class="snip" id="s8"><h3>6. Recall, precision and thresholds</h3><div class="qmeta" style="margin:-2px 0 4px">Session 2 · Challenge D</div><p>The 20 batches from Challenge D. For each threshold we count checks, missed risky batches and total cost.</p><div class="cell"><div class="cellbar"><span>Python</span><button class="copy" data-target="c8_0">Copy</button></div><pre id="c8_0"><code>probability = [0.92, 0.85, 0.78, 0.71, 0.66, 0.61, 0.55, 0.52, 0.47, 0.44,
-               0.38, 0.35, 0.31, 0.27, 0.22, 0.18, 0.14, 0.11, 0.07, 0.04]
-risky = [1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
-CHECK, MISSED = 200, 5000   # euro
-
-for threshold in [0.3, 0.4, 0.5, 0.7]:
-    checked = [p &gt;= threshold for p in probability]
-    tp = sum(c and r for c, r in zip(checked, risky))
-    missed = sum(risky) - tp
-    n_checks = sum(checked)
-    cost = n_checks * CHECK + missed * MISSED
-    print(f&quot;threshold {threshold}: {n_checks:2} checks, recall {tp / sum(risky):.0%}, &quot;
-          f&quot;precision {tp / n_checks:.0%}, missed {missed}, cost {cost} euro&quot;)</code></pre></div></section><section class="snip" id="s10"><h3>7. SQL: counting signed reports</h3><div class="qmeta" style="margin:-2px 0 4px">Session 2 · slide 36</div><p>The query from slide 36, on the same made-up data: hospital A signs 90 reports out of 100, hospital B 450 out of 900. Together, is it 70%? Python includes <code>sqlite3</code>, so it runs in Colab with nothing to install.</p><div class="cell"><div class="cellbar"><span>Python + SQL</span><button class="copy" data-target="c10_0">Copy</button></div><pre id="c10_0"><code>import sqlite3
-
-db = sqlite3.connect(&quot;:memory:&quot;)   # a small database that lives only in memory
-db.executescript(&quot;&quot;&quot;
-CREATE TABLE hospitals (id INTEGER PRIMARY KEY, name TEXT, region TEXT);
-CREATE TABLE reports   (id INTEGER PRIMARY KEY, hospital_id INTEGER, area TEXT, signed INTEGER);
-&quot;&quot;&quot;)
-db.executemany(&quot;INSERT INTO hospitals VALUES (?, ?, ?)&quot;,
-               [(1, &quot;Hospital A&quot;, &quot;Emilia-Romagna&quot;), (2, &quot;Hospital B&quot;, &quot;Puglia&quot;)])
-
-# Made-up data. Hospital A: 100 reports, 90 signed. Hospital B: 900 reports, 450 signed.
-reports = []
-for i in range(100):
-    reports.append((1, &quot;Radiology&quot; if i &lt; 40 else &quot;Lab&quot;, 1 if i &lt; 90 else 0))
-for i in range(900):
-    reports.append((2, &quot;Radiology&quot; if i &lt; 300 else &quot;Lab&quot;, 1 if i &lt; 450 else 0))
-db.executemany(&quot;INSERT INTO reports (hospital_id, area, signed) VALUES (?, ?, ?)&quot;, reports)
-
-query = &quot;&quot;&quot;
-SELECT h.name,
-       COUNT(*)                                   AS reports,
-       SUM(r.signed)                              AS signed,
-       ROUND(100.0 * SUM(r.signed) / COUNT(*), 1) AS signed_pct
-FROM reports r
-JOIN hospitals h ON r.hospital_id = h.id
-GROUP BY h.name;
-&quot;&quot;&quot;
-rows = db.execute(query).fetchall()
-for row in rows:
-    print(row)
-
-# The trap: the average of the two percentages is not the share for the whole group
-pcts = [row[3] for row in rows]
-print(&quot;Average of the percentages:&quot;, sum(pcts) / len(pcts), &quot;%&quot;)
-total = db.execute(&quot;SELECT ROUND(100.0 * SUM(signed) / COUNT(*), 1) FROM reports&quot;).fetchone()[0]
-print(&quot;Real share for the group:&quot;, total, &quot;%&quot;)</code></pre></div></section><section class="snip" id="s9"><h3>Solutions to the exercises</h3><div class="cell"><div class="cellbar"><span>Python</span><button class="copy" data-target="c9_0">Copy</button></div><pre id="c9_0"><code># A
-def at_content(seq):
-    return (seq.count(&quot;A&quot;) + seq.count(&quot;T&quot;)) / len(seq)
-print(round(gc_content(dna) + at_content(dna), 2))
-
-# B
-protein = translate(&quot;ATGAAATAGGGC&quot;)
-print(protein, &quot;first stop at position&quot;, protein.index(&quot;*&quot;))
-
-# C
-for threshold in [0.3, 0.4, 0.5, 0.7]:
-    checked = [p &gt;= threshold for p in probability]
-    missed = sum(r and not c for c, r in zip(checked, risky))
-    print(threshold, sum(checked) * 200 + missed * 500, &quot;euro&quot;)
-# D
-for row in db.execute(&quot;&quot;&quot;
-    SELECT r.area,
-           COUNT(*)                                   AS reports,
-           ROUND(100.0 * SUM(r.signed) / COUNT(*), 1) AS signed_pct
-    FROM reports r
-    JOIN hospitals h ON r.hospital_id = h.id
-    WHERE h.region = &#x27;Puglia&#x27;
-    GROUP BY r.area;&quot;&quot;&quot;):
-    print(row)</code></pre></div></section>
-  <div class="ex"><h3 style="margin:0 0 6px">Exercises</h3><p>Try them first. Solutions are at the bottom.</p><p><strong>A.</strong> Write <code>at_content(seq)</code>, the share of A and T. Check that <code>gc_content(dna) + at_content(dna)</code> is 1.</p><p><strong>B.</strong> Find the position of the first stop codon (<code>*</code>) in <code>translate(&quot;ATGAAATAGGGC&quot;)</code>.</p><p><strong>C.</strong> Change the costs in section 6: if a missed batch costs only 500 euro, which threshold is cheapest?</p><p><strong>D.</strong> In section 7, write a query for Puglia only: how many reports per area (Lab, Radiology), and what share is signed? Hint: add <code>WHERE h.region = 'Puglia'</code> and group by <code>r.area</code>.</p></div>
-</section>
-
-<section id="quiz">
-  <h2>Quiz</h2>
-  <p>The questions from the two sessions. Pick an answer to see why.</p>
-  <div class="score" id="score" aria-live="polite">0 / 9 answered</div>
-  <article class="q" id="q0" data-ans="1"><div class="qmeta">Session 1</div><h3>Where does a bioinformatician spend most of the day?</h3><div class="opts"><button class="opt" data-q="0" data-i="0"><span class="tile t0">A</span><span>In the wet lab, pipetting</span></button><button class="opt" data-q="0" data-i="1"><span class="tile t1">B</span><span>At the computer, with code and data</span></button><button class="opt" data-q="0" data-i="2"><span class="tile t2">C</span><span>On the ward, with patients</span></button><button class="opt" data-q="0" data-i="3"><span class="tile t3">D</span><span>At the microscope</span></button></div><p class="why" hidden><strong class="verdict"></strong> Data comes from the lab. The job is turning it into answers with computing, statistics and maths.</p></article><article class="q" id="q1" data-ans="2"><div class="qmeta">Session 1</div><h3>How big is one copy of the human genome?</h3><div class="opts"><button class="opt" data-q="1" data-i="0"><span class="tile t0">A</span><span>7.7 KB</span></button><button class="opt" data-q="1" data-i="1"><span class="tile t1">B</span><span>77 GB</span></button><button class="opt" data-q="1" data-i="2"><span class="tile t2">C</span><span>775 MB</span></button><button class="opt" data-q="1" data-i="3"><span class="tile t3">D</span><span>7.7 TB</span></button></div><p class="why" hidden><strong class="verdict"></strong> 3.1 billion bases × 2 bits ÷ 8 is about 775 million bytes. Raw sequencer data is far bigger.</p></article><article class="q" id="q2" data-ans="0"><div class="qmeta">Session 1</div><h3>A codon is 3 bases long. How many different codons exist?</h3><div class="opts"><button class="opt" data-q="2" data-i="0"><span class="tile t0">A</span><span>64</span></button><button class="opt" data-q="2" data-i="1"><span class="tile t1">B</span><span>12</span></button><button class="opt" data-q="2" data-i="2"><span class="tile t2">C</span><span>20</span></button><button class="opt" data-q="2" data-i="3"><span class="tile t3">D</span><span>81</span></button></div><p class="why" hidden><strong class="verdict"></strong> 4 × 4 × 4 = 64. There are only 20 amino acids, so several codons mean the same one, and 3 mean stop.</p></article><article class="q" id="q3" data-ans="1"><div class="qmeta">Session 1</div><h3>Why is BLAST so much faster than Needleman-Wunsch?</h3><div class="opts"><button class="opt" data-q="3" data-i="0"><span class="tile t0">A</span><span>It runs on faster computers</span></button><button class="opt" data-q="3" data-i="1"><span class="tile t1">B</span><span>It starts from short exact matches, not the full grid</span></button><button class="opt" data-q="3" data-i="2"><span class="tile t2">C</span><span>It only checks the first 10 letters</span></button><button class="opt" data-q="3" data-i="3"><span class="tile t3">D</span><span>It ignores gaps</span></button></div><p class="why" hidden><strong class="verdict"></strong> BLAST only computes around short exact &#x27;seeds&#x27;. It can miss weak similarities, but it answers in seconds.</p></article><article class="q" id="q4" data-ans="2"><div class="qmeta">Session 1</div><h3>What does the Python code print for &quot;ATGCGC&quot;? (share of G and C)</h3><div class="opts"><button class="opt" data-q="4" data-i="0"><span class="tile t0">A</span><span>0.33</span></button><button class="opt" data-q="4" data-i="1"><span class="tile t1">B</span><span>0.50</span></button><button class="opt" data-q="4" data-i="2"><span class="tile t2">C</span><span>0.67</span></button><button class="opt" data-q="4" data-i="3"><span class="tile t3">D</span><span>1.00</span></button></div><p class="why" hidden><strong class="verdict"></strong> Two Gs and two Cs: 4 out of 6.</p></article><article class="q" id="q5" data-ans="2"><div class="qmeta">Session 2</div><h3>In a FASTA file, what is on the line starting with &quot;&gt;&quot;?</h3><div class="opts"><button class="opt" data-q="5" data-i="0"><span class="tile t0">A</span><span>The sequence</span></button><button class="opt" data-q="5" data-i="1"><span class="tile t1">B</span><span>The score</span></button><button class="opt" data-q="5" data-i="2"><span class="tile t2">C</span><span>Name and description</span></button><button class="opt" data-q="5" data-i="3"><span class="tile t3">D</span><span>The date</span></button></div><p class="why" hidden><strong class="verdict"></strong> That is the header. The sequence starts on the next line.</p></article><article class="q" id="q6" data-ans="0"><div class="qmeta">Session 2</div><h3>100% accuracy on training data, 60% on the test set. What happened?</h3><div class="opts"><button class="opt" data-q="6" data-i="0"><span class="tile t0">A</span><span>Overfitting</span></button><button class="opt" data-q="6" data-i="1"><span class="tile t1">B</span><span>The test was too easy</span></button><button class="opt" data-q="6" data-i="2"><span class="tile t2">C</span><span>The model is perfect</span></button><button class="opt" data-q="6" data-i="3"><span class="tile t3">D</span><span>It needs less data</span></button></div><p class="why" hidden><strong class="verdict"></strong> The model memorised the examples instead of learning a rule.</p></article><article class="q" id="q7" data-ans="2"><div class="qmeta">Session 2</div><h3>100 batches, 5 risky. The model flags 10, including 4 of the 5. What is its recall?</h3><div class="opts"><button class="opt" data-q="7" data-i="0"><span class="tile t0">A</span><span>40%</span></button><button class="opt" data-q="7" data-i="1"><span class="tile t1">B</span><span>50%</span></button><button class="opt" data-q="7" data-i="2"><span class="tile t2">C</span><span>80%</span></button><button class="opt" data-q="7" data-i="3"><span class="tile t3">D</span><span>96%</span></button></div><p class="why" hidden><strong class="verdict"></strong> Recall looks only at the truly risky batches: 4 caught out of 5. Precision is 4 out of 10, i.e. 40%.</p></article><article class="q" id="q8" data-ans="1"><div class="qmeta">Session 2</div><h3>In food safety, which error is usually worse?</h3><div class="opts"><button class="opt" data-q="8" data-i="0"><span class="tile t0">A</span><span>They are equally bad</span></button><button class="opt" data-q="8" data-i="1"><span class="tile t1">B</span><span>False negative: a risky batch gets through</span></button><button class="opt" data-q="8" data-i="2"><span class="tile t2">C</span><span>False positive: a safe batch is re-tested</span></button><button class="opt" data-q="8" data-i="3"><span class="tile t3">D</span><span>Only the price of the test matters</span></button></div><p class="why" hidden><strong class="verdict"></strong> A false positive costs one extra test. A false negative can put a non-compliant product on the market.</p></article>
-</section>
-
-<section id="materials">
-  <h2>Materials</h2>
-  <p>The slides of both sessions and the notebooks used in class.</p>
-  <div class="links">
-    <a class="link" href="slides/Session_1_From_biological_data_to_algorithms.pdf" target="_blank" rel="noopener"><strong>Session 1 slides</strong><span>From biological data to algorithms (PDF)</span></a>
-    <a class="link" href="slides/Session_2_How_a_computer_learns.pdf" target="_blank" rel="noopener"><strong>Session 2 slides</strong><span>How a computer learns (PDF)</span></a>
-    <a class="link" href="https://colab.research.google.com/github/Martinaa1408/liceo-ferrari-bioinformatics/blob/main/notebooks/Session_1_live_coding_DNA.ipynb" target="_blank" rel="noopener"><strong>Session 1 live coding</strong><span>DNA, proteins and mutations, open in Colab</span></a>
-    <a class="link" href="https://colab.research.google.com/github/Martinaa1408/liceo-ferrari-bioinformatics/blob/main/notebooks/Session_2_decision_tree.ipynb" target="_blank" rel="noopener"><strong>Session 2 live demo</strong><span>A decision tree, open in Colab</span></a>
-    <a class="link" href="slides/Martina_Castellucci_my_path.pdf" target="_blank" rel="noopener"><strong>My path</strong><span>From Liceo Ferrari to bioinformatics (PDF)</span></a>
-  </div>
-</section>
-
-<section id="exam">
-  <h2>Ideas for your oral exam</h2>
-  <p>Five paths that connect subjects, starting from what we saw in the two sessions. Pick one and build it with your teachers.</p>
-  <div class="links">
-    <div class="link" style="cursor:default"><strong style="color:var(--a)">DNA as information</strong><span>Biology: genetic code, mutations. Maths: 4³ = 64 codons. Computer science: binary encoding, 2 bits per base.</span></div>
-    <div class="link" style="cursor:default"><strong style="color:var(--c)">Sickle cell and malaria</strong><span>Biology: point mutation, natural selection (carriers resist malaria better). Geography: where malaria spreads. Statistics: frequency of a variant.</span></div>
-    <div class="link" style="cursor:default"><strong style="color:var(--g)">Food safety, One Health</strong><span>Chemistry: contaminants and legal limits (EU Regulation 2023/915). Civic education: consumer health. Statistics: false positives and false negatives.</span></div>
-    <div class="link" style="cursor:default"><strong style="color:var(--t)">AI in science</strong><span>Chemistry: AlphaFold and the 2024 Nobel Prize. Philosophy: can a machine learn? Computer science: training, testing, data leakage.</span></div>
-    <div class="link" style="cursor:default"><strong style="color:var(--c)">Digital health</strong><span>Computer science: relational databases and SQL. Civic education: the Electronic Health Record (Fascicolo Sanitario Elettronico) and the privacy of health data. Maths: weighted average and the percentage trap.</span></div>
-  </div>
-</section>
-
-<section id="links">
-  <h2>Keep exploring</h2>
-  <p>Free, public tools used by researchers every day.</p>
-  <div class="links"><a class="link" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE=Proteins" target="_blank" rel="noopener"><strong>BLAST</strong><span>Compare a sequence against every known one</span></a><a class="link" href="https://www.uniprot.org" target="_blank" rel="noopener"><strong>UniProt</strong><span>Proteins, their function and linked diseases</span></a><a class="link" href="https://www.rcsb.org" target="_blank" rel="noopener"><strong>PDB</strong><span>3D structures of proteins</span></a><a class="link" href="https://alphafold.ebi.ac.uk" target="_blank" rel="noopener"><strong>AlphaFold DB</strong><span>Over 200 million predicted structures</span></a><a class="link" href="https://rosalind.info" target="_blank" rel="noopener"><strong>Rosalind</strong><span>Bioinformatics problems to solve in Python</span></a><a class="link" href="https://colab.research.google.com" target="_blank" rel="noopener"><strong>Google Colab</strong><span>Run Python in the browser, free</span></a><a class="link" href="https://corsi.unibo.it" target="_blank" rel="noopener"><strong>Unibo degree programmes</strong><span>Admission rules and deadlines</span></a><a class="link" href="https://www.cisiaonline.it" target="_blank" rel="noopener"><strong>CISIA</strong><span>Book the TOLC test</span></a></div>
-</section>
-
-<section id="feedback">
-  <h2>Feedback</h2>
-  <p>Tell me how it went. The form is anonymous and takes 2 minutes.</p>
-  <p style="margin-top:14px"><a class="bigbtn" href="feedback.html" style="text-decoration:none;display:inline-block">Open the feedback form</a></p>
-</section>
-
-<section id="about">
-  <h2>About me</h2>
-  <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-top:16px">
-    <img src="assets/martina.jpg" alt="Martina Castellucci" width="120" height="120" style="border-radius:50%;border:3px solid var(--accent);flex:none">
-    <p style="flex:1 1 280px;margin:0">Martina Castellucci. Diploma here at Liceo Ferrari, then a BSc in Biotechnology and an MSc in Bioinformatics at the University of Bologna. My thesis internship was at Neotron Laboratories in Modena, on predicting food contamination risk. Since October 2026 I work as a Product Specialist at Onit in Cesena, on healthcare data warehouses and dashboards.</p>
-  </div>
-  <div class="links">
-    <a class="link" href="slides/Martina_Castellucci_my_path.pdf" target="_blank" rel="noopener"><strong>My path</strong><span>The slides about my studies and work (PDF)</span></a>
-    <a class="link" href="https://www.linkedin.com/in/martina-castellucci-45b120298" target="_blank" rel="noopener"><strong>LinkedIn</strong><span>Questions about university or work? Write to me</span></a>
-    <a class="link" href="https://martinaa1408.github.io" target="_blank" rel="noopener"><strong>My website</strong><span>Projects, thesis, CV</span></a>
-  </div>
-</section>
-
-<footer>Made by Martina Castellucci, MSc Bioinformatics, University of Bologna. Quiz data in the challenges is made up for teaching. <a href="https://github.com/Martinaa1408/liceo-ferrari-bioinformatics" style="color:var(--accent)">Source on GitHub</a>.</footer>
+<nav aria-label="Sezioni della pagina"><div class="in"><a href="#attivita">Sfide</a><a href="#aiuti">Aiuti</a><a href="#codici">Codici</a><a href="#quiz">Quiz</a><a href="#extra">Extra</a><a href="#materiali">Materiali</a><a href="#feedback">Feedback</a><a href="#scrivimi">Scrivimi</a><a href="#card" data-open-card>Cartellino</a></div></nav>
+<main id="main"><section id="vai"><h2>Dove vuoi andare?</h2><div class="hub">
+<a href="#attivita"><b>Le sfide</b><span>A, B, C, D</span></a>
+<a href="#aiuti"><b>Aiuti</b><span>Suggerimenti per le sfide e gli esercizi</span></a>
+<a href="#codici"><b>Codici</b><span>Facoltativi, con spiegazione</span></a>
+<a href="#quiz"><b>Quiz</b><span>8 domande</span></a>
+<a href="#extra"><b>Extra</b><span>Il mio sito, certificazioni, Lab, siti e paper</span></a>
+<a href="#materiali"><b>Materiali</b><span>Slide e schede da scaricare</span></a>
+<a href="#feedback" class="hot"><b>Feedback</b><span>Dimmi com'è andata</span></a>
+<a href="#scrivimi"><b>Scrivimi</b><span>Domande su studi e lavoro</span></a>
+</div></section><section id="attivita"><h2>Le quattro sfide</h2>
+<p>Le facciamo a squadre in aula. I dati e le tabelle sono sulla scheda: <a href="attivita/Schede_attivita_studenti.pdf" target="_blank" rel="noopener">Schede A, B, C, D (PDF)</a>. Se ti blocchi, vai agli <a href="#aiuti">aiuti</a>.</p>
+<div class="cards4">
+<div class="card2" id="att-a"><span class="tag">Sfida A · Incontro 1</span><h3>Allineare due sequenze a mano</h3>
+<p>Confronta GAATTC con GATTA e trova il modo migliore di metterle una sopra l'altra. Uguali +1, diverse −1, spazio −2.</p>
+<ol class="lines"><li>Disegna la griglia e riempi la prima riga e colonna: 0, −2, −4...</li><li>Riempi ogni cella: tre valori possibili, tieni il più alto.</li><li>Parti dall'ultima cella e torna indietro. Scrivi l'allineamento.</li></ol>
+<p class="go"><a href="#aiuti-a">Aiuti per la sfida A</a></p></div>
+<div class="card2" id="att-b"><span class="tag">Sfida B · Incontro 1</span><h3>Caccia alla sequenza</h3>
+<p>Scopri di che proteina si tratta e di che organismo. Le sequenze sono nella scheda e nel file <a href="attivita/sequenze_attivita_B.txt" target="_blank" rel="noopener">sequenze_attivita_B.txt</a>.</p>
+<ol class="lines"><li>Copia la sequenza 1 e incollala su <a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE=Proteins" target="_blank" rel="noopener">Protein BLAST</a>.</li><li>Leggi la prima riga dei risultati, poi cerca il nome su <a href="https://www.uniprot.org" target="_blank" rel="noopener">UniProt</a> (sezione Function).</li><li>Ripeti con le altre. La 4 è quasi uguale alla 3: che cosa cambia?</li></ol>
+<p class="go"><a href="#aiuti-b">Aiuti per la sfida B</a></p></div>
+<div class="card2" id="att-c"><span class="tag">Sfida C · Incontro 2</span><h3>Diventare il modello</h3>
+<p>Il modello siete voi: guardate 12 lotti di cibo già controllati, scrivete una regola e usatela su 6 lotti nuovi.</p>
+<ol class="lines"><li>Scrivi una regola: «non conforme se...».</li><li>Applicala ai 6 lotti nuovi e scrivi le previsioni.</li><li>Contate quante ne avete azzeccate su 6.</li></ol>
+<p class="go"><a href="#aiuti-c">Aiuti per la sfida C</a></p></div>
+<div class="card2" id="att-d"><span class="tag">Sfida D · Incontro 2</span><h3>Scegliere la soglia</h3>
+<p>Ogni controllo costa 200 euro. Un lotto a rischio che sfugge costa 5.000 euro. Quale soglia costa meno?</p>
+<ol class="lines"><li>Per ogni soglia (0,3 · 0,5 · 0,7) conta i controlli.</li><li>Conta i lotti a rischio che restano sotto la soglia.</li><li>Costo = controlli × 200 + persi × 5.000. Poi il secondo round, con al massimo 10 controlli.</li></ol>
+<p class="go"><a href="#aiuti-d">Aiuti per la sfida D</a></p></div>
+</div></section><section id="aiuti"><h2>Aiuti</h2>
+<p>Prima prova da solo. Apri un aiuto alla volta, dal primo. Le soluzioni le guardiamo insieme in aula.</p>
+<div class="chips"><a href="#aiuti-a">Sfida A</a><a href="#aiuti-b">Sfida B</a><a href="#aiuti-c">Sfida C</a><a href="#aiuti-d">Sfida D</a><a href="#aiuti-codice">Esercizi di codice</a></div>
+<div class="card2" id="aiuti-a"><h3>Sfida A · allineare a mano</h3>
+<details class="hint"><summary>Aiuto 1 · da dove si parte</summary><p>La griglia di GAATTC contro GATTA ha 7 righe e 6 colonne (con la riga e la colonna dei gap). La prima riga è 0, −2, −4, −6, −8, −10. La prima colonna è 0, −2, −4, −6, −8, −10, −12.</p></details>
+<details class="hint"><summary>Aiuto 2 · una cella d'esempio</summary><p>Cella G/G (prima lettera con prima lettera): diagonale 0 + 1 = 1, da sopra −2 − 2 = −4, da sinistra −2 − 2 = −4. Il massimo è 1. Se sei fermo, guarda solo la diagonale.</p></details>
+<details class="hint"><summary>Aiuto 3 · il ritorno</summary><p>Dall'ultima cella, chiediti da quale delle tre strade è arrivato il numero. Diagonale: le due lettere stanno una sopra l'altra. Verticale: gap nella seconda sequenza. Orizzontale: gap nella prima.</p></details>
 </div>
+<div class="card2" id="aiuti-b"><h3>Sfida B · caccia alla sequenza</h3>
+<details class="hint"><summary>Aiuto 1 · BLAST non parte</summary><p>Controlla di aver scelto Protein BLAST e non Nucleotide BLAST: le sequenze sono proteine. Incolla solo la sequenza, senza spazi.</p></details>
+<details class="hint"><summary>Aiuto 2 · come leggere il risultato</summary><p>Nella tabella guarda la colonna Description (il nome) e la colonna Per. ident (la percentuale di identità): più è vicina a 100, più la sequenza è uguale a quella nota.</p></details>
+<details class="hint"><summary>Aiuto 3 · la sequenza 4</summary><p>Metti la 3 e la 4 una sopra l'altra in un editor di testo, oppure usa su BLAST la modalità Align two or more sequences. Trova la lettera diversa e conta la posizione. Poi cerca il nome della proteina con la parola disease su UniProt.</p></details>
+</div>
+<div class="card2" id="aiuti-c"><h3>Sfida C · diventare il modello</h3>
+<details class="hint"><summary>Aiuto 1 · da dove cominciare</summary><p>Prendi le righe con «non conforme = sì» e cerca che cosa hanno in comune: l'alimento, l'origine o la stagione? Poi controlla se la regola vale anche per le righe «no».</p></details>
+<details class="hint"><summary>Aiuto 2 · la trappola</summary><p>Nei lotti nuovi c'è una colonna vuota. Chiediti perché. Prima di usare un'informazione, domandati: quando farò la previsione, la avrò davvero?</p></details>
+<details class="hint"><summary>Aiuto 3 · quasi la regola</summary><p>Due alimenti spiegano tutti i «sì». Uno basta da solo. L'altro dipende anche dall'origine.</p></details>
+</div>
+<div class="card2" id="aiuti-d"><h3>Sfida D · scegliere la soglia</h3>
+<details class="hint"><summary>Aiuto 1 · un esempio svolto</summary><p>Soglia 0,5: i lotti da 0,55 in su sono 7, più il lotto 8 (0,52): 8 controlli. Tra i lotti a rischio restano sotto la soglia il 10° (0,44) e il 14° (0,27): 2 persi. Costo: 8 × 200 + 2 × 5.000 = 11.600 euro.</p></details>
+<details class="hint"><summary>Aiuto 2 · una tabellina</summary><p>Fai una tabella con le colonne soglia, controlli, persi, costo. Una riga per soglia. Poi confronta l'ultima colonna.</p></details>
+<details class="hint"><summary>Aiuto 3 · il codice</summary><p>Il codice dei <a href="https://colab.research.google.com/github/Martinaa1408/liceo-ferrari-bioinformatics/blob/main/notebooks/Toolkit_semplice_IT.ipynb" target="_blank" rel="noopener">notebook</a> fa questo conto in una volta sola. Prima prova a mano con due soglie.</p></details>
+</div>
+<div class="card2" id="aiuti-codice"><h3>Esercizi di codice</h3>
+<div class="ex"><p><b>Esercizio 1.</b> Calcola il contenuto AT (percentuale di A e T). Quanto fa la somma con il contenuto GC?</p>
+<details class="hint"><summary>Aiuto</summary><p>Copia il codice del contenuto GC e sostituisci G e C con A e T. La somma deve dare 1.</p></details>
+<details class="sol"><summary>Soluzione</summary><div class="cell"><div class="cellbar"><span>Python</span><button class="copy" data-target="c_es1">Copia</button></div><pre id="c_es1"><code># Esercizio 1: la percentuale di A e T
+numero_A = dna.count(&quot;A&quot;)
+numero_T = dna.count(&quot;T&quot;)
+contenuto_AT = (numero_A + numero_T) / len(dna)
 
-<script>
-(function(){
-  function copyText(text, btn, done){
-    function ok(){ if(btn){var o=btn.textContent;btn.textContent=done||'Copied';setTimeout(function(){btn.textContent=o},1400);} }
-    try{
-      navigator.clipboard.writeText(text).then(ok,function(){fallback(text);ok();});
-    }catch(e){fallback(text);ok();}
+print(round(contenuto_AT, 2))
+print(round(contenuto_GC + contenuto_AT, 2))   # deve fare 1.0</code></pre><div class="out">0.44
+1.0</div></div></details></div>
+<div class="ex"><p><b>Esercizio 2.</b> Aggiungi alla tabella <code>AAA</code> (K), <code>TAG</code> (stop, simbolo <code>*</code>) e <code>GGC</code> (G). Traduci <code>ATGAAATAGGGC</code>. In quale posizione compare lo stop?</p>
+<details class="hint"><summary>Aiuto</summary><p>Per aggiungere una voce a un dizionario: <code>tabella["AAA"] = "K"</code>. Poi <code>traduci("ATGAAATAGGGC")</code>. Per lo stop usa <code>.index("*")</code>, che conta da 0: aggiungi 1.</p></details>
+<details class="sol"><summary>Soluzione</summary><div class="cell"><div class="cellbar"><span>Python</span><button class="copy" data-target="c_es2">Copia</button></div><pre id="c_es2"><code># Esercizio 2: aggiungi tre codoni alla tabella e traduci un&#x27;altra sequenza
+tabella[&quot;AAA&quot;] = &quot;K&quot;   # lisina
+tabella[&quot;TAG&quot;] = &quot;*&quot;   # stop: la proteina finisce qui
+tabella[&quot;GGC&quot;] = &quot;G&quot;   # glicina
+
+proteina = traduci(&quot;ATGAAATAGGGC&quot;)
+print(proteina)
+print(&quot;Il primo stop è in posizione&quot;, proteina.index(&quot;*&quot;) + 1)</code></pre><div class="out">MK*G
+Il primo stop è in posizione 3</div></div></details></div>
+</div></section><section id="codici"><h2>Codici</h2>
+<p><span class="tag deep">Facoltativo</span>Servono per capire come lavora il computer, non per le sfide. Se non programmi, salta questa parte. Per eseguirli: <a href="https://colab.research.google.com/github/Martinaa1408/liceo-ferrari-bioinformatics/blob/main/notebooks/Toolkit_semplice_IT.ipynb" target="_blank" rel="noopener">apri il notebook in Google Colab</a> e premi <b>Esegui tutto</b>.</p>
+<details><summary>Mini-vocabolario di Python</summary><p>Una <i>variabile</i> è un'etichetta attaccata a un valore. Una <i>stringa</i> è un testo tra virgolette. Un <i>dizionario</i> è come un vocabolario: cerchi la parola (chiave) e trovi il significato (valore). Una <i>funzione</i> è una procedura con un nome. Un <i>ciclo</i> (<code>for</code>) ripete un'azione. Un <code>if</code> sceglie tra due strade. Il simbolo <code>#</code> inizia un commento.</p></details><section class="snip" id="b-dna_testo"><h3>1. Il DNA è un testo</h3><p>Una sequenza di DNA è una stringa, cioè un testo. Python sa misurarla e contare le lettere.</p><div class="cell"><div class="cellbar"><span>Python</span><button class="copy" data-target="c_dna_testo">Copia</button></div><pre id="c_dna_testo"><code># Una sequenza di DNA è solo un testo tra virgolette
+dna = &quot;ATGGTGCACCTGACTCCTGAGGAGAAG&quot;   # l&#x27;inizio del gene dell&#x27;emoglobina beta (HBB)
+
+print(len(dna))          # quante lettere?
+print(dna.count(&quot;G&quot;))    # quante volte compare la G?</code></pre><div class="out">27
+9</div></div><details><summary>Che cosa fa, riga per riga</summary><ol class="lines"><li><code>dna = "..."</code> mette la sequenza in una variabile chiamata <code>dna</code>.</li><li><code>len(dna)</code> restituisce la lunghezza: 27 lettere.</li><li><code>dna.count("G")</code> conta quante volte compare la G: 9.</li><li><code>print(...)</code> mostra il risultato sullo schermo.</li></ol></details></section><section class="snip" id="b-gc"><h3>2. Il contenuto GC</h3><p>È la percentuale di lettere G e C. Si usa per descrivere un genoma o per progettare esperimenti.</p><div class="cell"><div class="cellbar"><span>Python</span><button class="copy" data-target="c_gc">Copia</button></div><pre id="c_gc"><code># Contenuto GC: la percentuale di lettere G e C nella sequenza
+numero_G = dna.count(&quot;G&quot;)
+numero_C = dna.count(&quot;C&quot;)
+contenuto_GC = (numero_G + numero_C) / len(dna)
+
+print(round(contenuto_GC, 2))   # arrotonda a 2 decimali</code></pre><div class="out">0.56</div></div><details><summary>Che cosa fa, riga per riga</summary><ol class="lines"><li>Contiamo le G e le C.</li><li>Sommiamo i due numeri e dividiamo per la lunghezza totale.</li><li><code>round(..., 2)</code> arrotonda a due decimali.</li><li>Controllo a mano: 9 G + 6 C = 15 lettere su 27, cioè 0,56.</li></ol></details></section><section class="snip" id="b-tabella"><h3>3. Il codice genetico è un dizionario <span class="tag lat">Curiosità</span></h3><p>In Python la tabella del codice genetico è un dizionario. Qui ne usiamo solo 8 voci, quelle che servono per il gene dell'emoglobina. Quella completa ha 64 codoni.</p><div class="cell"><div class="cellbar"><span>Python</span><button class="copy" data-target="c_tabella">Copia</button></div><pre id="c_tabella"><code># Una piccola parte della tabella del codice genetico:
+# a ogni gruppo di 3 lettere (codone) corrisponde un amminoacido
+tabella = {
+    &quot;ATG&quot;: &quot;M&quot;,   # metionina
+    &quot;GTG&quot;: &quot;V&quot;,   # valina
+    &quot;CAC&quot;: &quot;H&quot;,   # istidina
+    &quot;CTG&quot;: &quot;L&quot;,   # leucina
+    &quot;ACT&quot;: &quot;T&quot;,   # treonina
+    &quot;CCT&quot;: &quot;P&quot;,   # prolina
+    &quot;GAG&quot;: &quot;E&quot;,   # acido glutammico
+    &quot;AAG&quot;: &quot;K&quot;,   # lisina
+}
+
+print(tabella[&quot;GAG&quot;])</code></pre><div class="out">E</div></div><details><summary>Che cosa fa, riga per riga</summary><ol class="lines"><li>Ogni riga ha la forma <code>"codone": "amminoacido"</code>.</li><li><code>tabella["GAG"]</code> cerca la chiave GAG e restituisce E, l'acido glutammico.</li></ol></details></section><section class="snip" id="b-traduci"><h3>4. Dal DNA alla proteina <span class="tag lat">Curiosità</span></h3><p>La funzione legge il DNA tre lettere alla volta e cerca ogni gruppo nella tabella. È la traduzione di una frase parola per parola con il vocabolario.</p><div class="cell"><div class="cellbar"><span>Python</span><button class="copy" data-target="c_traduci">Copia</button></div><pre id="c_traduci"><code># Una &quot;ricetta&quot; con un nome: legge il DNA 3 lettere alla volta
+# e cerca ogni gruppo nella tabella
+def traduci(sequenza):
+    proteina = &quot;&quot;
+    for i in range(0, len(sequenza), 3):        # 0, 3, 6, 9, ...
+        codone = sequenza[i:i + 3]              # prende 3 lettere
+        proteina = proteina + tabella[codone]   # cerca l&#x27;amminoacido e lo aggiunge
+    return proteina
+
+print(traduci(dna))</code></pre><div class="out">MVHLTPEEK</div></div><details><summary>Che cosa fa, riga per riga</summary><ol class="lines"><li><code>def traduci(sequenza):</code> definisce la funzione. Tra parentesi c'è il dato che le diamo.</li><li><code>range(0, len(sequenza), 3)</code> produce 0, 3, 6, 9... cioè le posizioni di inizio di ogni codone.</li><li><code>sequenza[i:i + 3]</code> prende 3 lettere a partire dalla posizione <code>i</code>.</li><li><code>proteina = proteina + ...</code> aggiunge l'amminoacido alla proteina costruita finora.</li><li><code>return proteina</code> restituisce il risultato. Sono le prime 9 lettere dell'emoglobina beta.</li></ol></details></section><section class="snip" id="b-mutazione"><h3>5. Una lettera cambia, la proteina cambia</h3><p>Il codone GAG diventa GTG: l'acido glutammico (E) diventa valina (V). È la variante dell'anemia falciforme.</p><div class="cell"><div class="cellbar"><span>Python</span><button class="copy" data-target="c_mutazione">Copia</button></div><pre id="c_mutazione"><code># Cambiamo una sola lettera: la prima GAG diventa GTG
+dna_mutato = dna.replace(&quot;GAG&quot;, &quot;GTG&quot;, 1)
+
+print(traduci(dna))          # proteina sana
+print(traduci(dna_mutato))   # proteina con la mutazione</code></pre><div class="out">MVHLTPEEK
+MVHLTPVEK</div></div><details><summary>Che cosa fa, riga per riga</summary><ol class="lines"><li><code>replace("GAG", "GTG", 1)</code> sostituisce la prima GAG con GTG. Il <code>1</code> dice: una sola volta.</li><li>Traduciamo le due sequenze e confrontiamo: MVHLTPEEK contro MVHLTPVEK.</li></ol></details></section><section class="snip" id="b-regola"><h3>6. Una regola scritta da una persona</h3><p>Il machine learning cerca da solo la regola. Qui la scriviamo noi, con un <code>if</code>, e vediamo quante volte indovina sui 6 lotti nuovi.</p><div class="cell"><div class="cellbar"><span>Python</span><button class="copy" data-target="c_regola">Copia</button></div><pre id="c_regola"><code># Una regola scritta da una persona: se... allora...
+# I 6 lotti nuovi della sfida C: (alimento, origine, stagione)
+lotti_nuovi = [
+    (&quot;mais&quot;, &quot;extra UE&quot;, &quot;estate&quot;),
+    (&quot;pesce spada&quot;, &quot;UE&quot;, &quot;estate&quot;),
+    (&quot;riso&quot;, &quot;UE&quot;, &quot;estate&quot;),
+    (&quot;mais&quot;, &quot;UE&quot;, &quot;estate&quot;),
+    (&quot;mela&quot;, &quot;extra UE&quot;, &quot;estate&quot;),
+    (&quot;mais&quot;, &quot;extra UE&quot;, &quot;inverno&quot;),
+]
+# La risposta vera (lotto non conforme? sì/no), nello stesso ordine
+risposte_vere = [&quot;sì&quot;, &quot;sì&quot;, &quot;no&quot;, &quot;sì&quot;, &quot;no&quot;, &quot;no&quot;]
+
+giuste = 0
+for i in range(6):
+    alimento, origine, stagione = lotti_nuovi[i]
+
+    if alimento == &quot;pesce spada&quot; or (alimento == &quot;mais&quot; and origine == &quot;extra UE&quot;):
+        previsione = &quot;sì&quot;
+    else:
+        previsione = &quot;no&quot;
+
+    print(lotti_nuovi[i], &quot;previsione:&quot;, previsione, &quot;| vera:&quot;, risposte_vere[i])
+    if previsione == risposte_vere[i]:
+        giuste = giuste + 1
+
+print(&quot;Risposte giuste:&quot;, giuste, &quot;su 6&quot;)</code></pre><div class="out">(&#x27;mais&#x27;, &#x27;extra UE&#x27;, &#x27;estate&#x27;) previsione: sì | vera: sì
+(&#x27;pesce spada&#x27;, &#x27;UE&#x27;, &#x27;estate&#x27;) previsione: sì | vera: sì
+(&#x27;riso&#x27;, &#x27;UE&#x27;, &#x27;estate&#x27;) previsione: no | vera: no
+(&#x27;mais&#x27;, &#x27;UE&#x27;, &#x27;estate&#x27;) previsione: no | vera: sì
+(&#x27;mela&#x27;, &#x27;extra UE&#x27;, &#x27;estate&#x27;) previsione: no | vera: no
+(&#x27;mais&#x27;, &#x27;extra UE&#x27;, &#x27;inverno&#x27;) previsione: sì | vera: no
+Risposte giuste: 4 su 6</div></div><details><summary>Che cosa fa, riga per riga</summary><ol class="lines"><li><code>lotti_nuovi</code> è una lista di 6 lotti. Ogni lotto è un gruppo di tre informazioni.</li><li>Il <code>for</code> passa i lotti uno alla volta.</li><li><code>if ... or (... and ...)</code>: è non conforme se è pesce spada, oppure se è mais extra UE.</li><li>Alla fine contiamo le risposte giuste: 4 su 6. Anche una buona regola sbaglia qualcosa sui dati nuovi.</li></ol></details></section><section class="snip" id="b-recall"><h3>7. Recall e precisione</h3><p>Due modi diversi di misurare un modello. Il recall chiede: dei lotti a rischio, quanti ne ho trovati? La precisione chiede: quando do l'allarme, quante volte ho ragione?</p><div class="cell"><div class="cellbar"><span>Python</span><button class="copy" data-target="c_recall">Copia</button></div><pre id="c_recall"><code># 100 lotti, 5 davvero a rischio. Il modello ne segnala 10
+# e tra questi ce ne sono 4 davvero a rischio
+a_rischio = 5
+segnalati = 10
+trovati = 4
+
+recall = trovati / a_rischio          # quanti dei lotti a rischio ho trovato?
+precisione = trovati / segnalati      # quando segnalo, quante volte ho ragione?
+
+print(&quot;Recall:&quot;, recall)
+print(&quot;Precisione:&quot;, precisione)</code></pre><div class="out">Recall: 0.8
+Precisione: 0.4</div></div><details><summary>Che cosa fa, riga per riga</summary><ol class="lines"><li>Recall = trovati / a rischio = 4 / 5 = 0,8.</li><li>Precisione = trovati / segnalati = 4 / 10 = 0,4.</li><li>Sono due numeri diversi e non si possono scambiare.</li></ol></details></section><div class="card2 more"><h3>Più codici e curiosità</h3><p>Allineamento Needleman-Wunsch, albero decisionale, soglia, SQL e molto altro, nei notebook.</p>
+<div class="links"><a class="link" href="https://colab.research.google.com/github/Martinaa1408/liceo-ferrari-bioinformatics/blob/main/notebooks/Toolkit_semplice_IT.ipynb" target="_blank" rel="noopener"><strong>Notebook semplificato</strong><span>Con i codici avanzati e le curiosità, in italiano</span></a><a class="link" href="https://colab.research.google.com/github/Martinaa1408/liceo-ferrari-bioinformatics/blob/main/notebooks/Toolkit_studenti.ipynb" target="_blank" rel="noopener"><strong>Notebook completo</strong><span>Tutto il codice dei due incontri (in inglese)</span></a><a class="link" href="https://colab.research.google.com/github/Martinaa1408/liceo-ferrari-bioinformatics/blob/main/notebooks/Session_1_live_coding_DNA.ipynb" target="_blank" rel="noopener"><strong>Live coding 1</strong><span>DNA come testo, traduzione, mutazioni</span></a><a class="link" href="https://colab.research.google.com/github/Martinaa1408/liceo-ferrari-bioinformatics/blob/main/notebooks/Session_2_decision_tree.ipynb" target="_blank" rel="noopener"><strong>Live demo 2</strong><span>Un albero decisionale impara una regola</span></a></div></div></section><section id="quiz"><h2>Quiz</h2><p>Scegli una risposta per vedere la spiegazione.</p><div class="score" id="score" aria-live="polite">0 / 7 risposte</div><article class="q" id="q0" data-ans="0"><div class="qmeta">Domanda 1</div><h3>Che cosa restituisce len(dna) per una sequenza di DNA?</h3><div class="opts"><button class="opt" data-q="0" data-i="0"><span class="tile t0">A</span><span>Il numero di lettere</span></button><button class="opt" data-q="0" data-i="1"><span class="tile t1">B</span><span>La lettera più frequente</span></button><button class="opt" data-q="0" data-i="2"><span class="tile t2">C</span><span>La proteina</span></button><button class="opt" data-q="0" data-i="3"><span class="tile t3">D</span><span>Il contenuto GC</span></button></div><p class="why" hidden role="status"><span class="verdict"></span> <code>len</code> conta gli elementi di un testo: qui le lettere.</p></article><article class="q" id="q1" data-ans="2"><div class="qmeta">Domanda 2</div><h3>Contenuto GC di ATGCGC?</h3><div class="opts"><button class="opt" data-q="1" data-i="0"><span class="tile t0">A</span><span>0,33</span></button><button class="opt" data-q="1" data-i="1"><span class="tile t1">B</span><span>0,50</span></button><button class="opt" data-q="1" data-i="2"><span class="tile t2">C</span><span>0,67</span></button><button class="opt" data-q="1" data-i="3"><span class="tile t3">D</span><span>1,00</span></button></div><p class="why" hidden role="status"><span class="verdict"></span> Due G e due C su 6 lettere: 4/6 = 0,67.</p></article><article class="q" id="q2" data-ans="1"><div class="qmeta">Domanda 3</div><h3>GAG diventa GTG. Che cosa cambia nella proteina?</h3><div class="opts"><button class="opt" data-q="2" data-i="0"><span class="tile t0">A</span><span>Niente</span></button><button class="opt" data-q="2" data-i="1"><span class="tile t1">B</span><span>E diventa V</span></button><button class="opt" data-q="2" data-i="2"><span class="tile t2">C</span><span>Si ferma la traduzione</span></button><button class="opt" data-q="2" data-i="3"><span class="tile t3">D</span><span>Si aggiunge un amminoacido</span></button></div><p class="why" hidden role="status"><span class="verdict"></span> GAG codifica l'acido glutammico (E), GTG la valina (V). È la mutazione dell'anemia falciforme.</p></article><article class="q" id="q3" data-ans="1"><div class="qmeta">Domanda 4</div><h3>In Python, a che cosa somiglia un dizionario?</h3><div class="opts"><button class="opt" data-q="3" data-i="0"><span class="tile t0">A</span><span>A un ciclo</span></button><button class="opt" data-q="3" data-i="1"><span class="tile t1">B</span><span>A un vocabolario: cerco una chiave e trovo un valore</span></button><button class="opt" data-q="3" data-i="2"><span class="tile t2">C</span><span>A un commento</span></button><button class="opt" data-q="3" data-i="3"><span class="tile t3">D</span><span>A una moltiplicazione</span></button></div><p class="why" hidden role="status"><span class="verdict"></span> Come un vocabolario latino-italiano: cerchi la parola e trovi il significato.</p></article><article class="q" id="q4" data-ans="1"><div class="qmeta">Domanda 5</div><h3>Che cos&#x27;è il data leakage?</h3><div class="opts"><button class="opt" data-q="4" data-i="0"><span class="tile t0">A</span><span>Perdere dei dati</span></button><button class="opt" data-q="4" data-i="1"><span class="tile t1">B</span><span>Usare un&#x27;informazione che al momento della previsione non avrò</span></button><button class="opt" data-q="4" data-i="2"><span class="tile t2">C</span><span>Cancellare i dati di un paziente</span></button><button class="opt" data-q="4" data-i="3"><span class="tile t3">D</span><span>Un virus informatico</span></button></div><p class="why" hidden role="status"><span class="verdict"></span> Il modello sembra perfetto nell'allenamento ma sui dati nuovi non ha quell'informazione.</p></article><article class="q" id="q5" data-ans="2"><div class="qmeta">Domanda 6</div><h3>100 lotti, 5 davvero a rischio. Il modello ne trova 4. Quanto vale il recall?</h3><div class="opts"><button class="opt" data-q="5" data-i="0"><span class="tile t0">A</span><span>0,4</span></button><button class="opt" data-q="5" data-i="1"><span class="tile t1">B</span><span>0,5</span></button><button class="opt" data-q="5" data-i="2"><span class="tile t2">C</span><span>0,8</span></button><button class="opt" data-q="5" data-i="3"><span class="tile t3">D</span><span>4</span></button></div><p class="why" hidden role="status"><span class="verdict"></span> Recall = trovati / davvero a rischio = 4/5 = 0,8.</p></article><article class="q" id="q6" data-ans="1"><div class="qmeta">Domanda 7</div><h3>Ospedale A: 90 referti firmati su 100. Ospedale B: 450 su 900. Quanti sono i firmati in totale in percentuale?</h3><div class="opts"><button class="opt" data-q="6" data-i="0"><span class="tile t0">A</span><span>70%</span></button><button class="opt" data-q="6" data-i="1"><span class="tile t1">B</span><span>54%</span></button><button class="opt" data-q="6" data-i="2"><span class="tile t2">C</span><span>50%</span></button><button class="opt" data-q="6" data-i="3"><span class="tile t3">D</span><span>90%</span></button></div><p class="why" hidden role="status"><span class="verdict"></span> 540 su 1000 = 54%. La media delle due percentuali (70%) è sbagliata perché gli ospedali hanno dimensioni diverse.</p></article></section><section id="extra"><h2>Extra</h2>
+<div class="chips"><a href="#extra-me">Il mio sito e le certificazioni</a><a href="#extra-lab">Lab</a><a href="#extra-siti">Siti da esplorare</a><a href="#extra-paper">Paper da leggere</a></div>
+<div class="grp" id="extra-me"><h3>Il mio sito e le certificazioni</h3><div class="links">
+<a class="link" href="https://martinaa1408.github.io" target="_blank" rel="noopener"><strong>Il mio sito</strong><span>Progetti, tesi, CV</span></a>
+<a class="link" href="https://www.linkedin.com/in/martina-castellucci-45b120298/details/certifications/" target="_blank" rel="noopener"><strong>Le mie certificazioni</strong><span>L'elenco completo su LinkedIn, con il link per verificarle</span></a>
+<a class="link" href="https://www.linkedin.com/in/martina-castellucci-45b120298" target="_blank" rel="noopener"><strong>LinkedIn</strong><span>Domande su università o lavoro? Scrivimi</span></a>
+</div></div>
+<div class="grp" id="extra-lab"><h3>Lab</h3><p class="note">Strumenti aperti che ho creato io. Non serve codice. L'interfaccia è in inglese e i dati sono inventati, a scopo didattico.</p>
+<div class="badge-row"><a href="https://martinaa1408.github.io/lab/" target="_blank" rel="noopener" aria-label="Lab di Martina Castellucci"><img src="assets/badge-lab.svg" alt="Lab · Martina Castellucci" height="64"></a><a class="bigbtn" href="https://martinaa1408.github.io/lab/" target="_blank" rel="noopener" style="text-decoration:none">Apri il Lab</a></div>
+<div class="dl">
+<div class="link"><strong>Sequence tools</strong><span>Contenuto GC, ORF, allineamento. Prova la sfida A senza carta.</span></div>
+<div class="link"><strong>Diagnostic test</strong><span>Soglia, sensibilità, curva ROC. È la sfida D interattiva.</span></div>
+<div class="link"><strong>Food safety</strong><span>Rischio alimentare, dalla mia tesi.</span></div>
+<div class="link"><strong>Hospital KPIs</strong><span>Ricoveri, degenza, query SQL.</span></div>
+</div></div>
+<div class="grp" id="extra-siti"><h3>Siti da esplorare</h3><div class="links">
+<a class="link" href="https://rosalind.info" target="_blank" rel="noopener"><strong>Rosalind</strong><span>Problemi di bioinformatica da risolvere con il codice</span></a>
+<a class="link" href="https://biopython.org" target="_blank" rel="noopener"><strong>Biopython</strong><span>Libreria Python per FASTA, traduzione e BLAST</span></a>
+<a class="link" href="https://scikit-learn.org" target="_blank" rel="noopener"><strong>scikit-learn</strong><span>Machine learning con pochi comandi</span></a>
+<a class="link" href="https://www.kaggle.com/learn" target="_blank" rel="noopener"><strong>Kaggle Learn</strong><span>Corsi brevi e gratuiti su Python e ML</span></a>
+<a class="link" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE=Proteins" target="_blank" rel="noopener"><strong>BLAST</strong><span>Confronta una sequenza con tutte quelle note</span></a>
+<a class="link" href="https://www.uniprot.org" target="_blank" rel="noopener"><strong>UniProt</strong><span>Proteine, funzione e malattie</span></a>
+<a class="link" href="https://www.rcsb.org" target="_blank" rel="noopener"><strong>PDB</strong><span>Strutture 3D delle proteine</span></a>
+<a class="link" href="https://alphafold.ebi.ac.uk" target="_blank" rel="noopener"><strong>AlphaFold DB</strong><span>Strutture previste dal computer</span></a>
+<a class="link" href="https://www.garanteprivacy.it" target="_blank" rel="noopener"><strong>Garante privacy</strong><span>Guide in italiano sui dati sanitari</span></a>
+</div></div>
+<div class="grp" id="extra-paper"><h3>Paper da leggere</h3><p class="note">Articoli veri. L'abstract basta per cominciare ed è gratis.</p><div class="papers">
+<div class="p"><b>Allineamento, 1970</b><span>Needleman e Wunsch. J Mol Biol 48:443. </span><a href="https://doi.org/10.1016/0022-2836(70)90057-4" target="_blank" rel="noopener">DOI</a></div>
+<div class="p"><b>BLAST, 1990</b><span>Altschul e colleghi. J Mol Biol 215:403. </span><a href="https://doi.org/10.1016/S0022-2836(05)80360-2" target="_blank" rel="noopener">DOI</a></div>
+<div class="p"><b>Il genoma umano, 2001</b><span>Consorzio internazionale. Nature 409:860. </span><a href="https://doi.org/10.1038/35057062" target="_blank" rel="noopener">DOI</a></div>
+<div class="p"><b>AlphaFold, 2021</b><span>Jumper e colleghi. Nature 596:583. </span><a href="https://doi.org/10.1038/s41586-021-03819-2" target="_blank" rel="noopener">DOI</a></div>
+<div class="p"><b>CatBoost, 2018</b><span>Prokhorenkova e colleghi. NeurIPS 2018. </span><a href="https://arxiv.org/abs/1706.09516" target="_blank" rel="noopener">arXiv</a></div>
+<div class="p"><b>Data leakage, 2012</b><span>Kaufman e colleghi. ACM TKDD 6(4):15. </span><a href="https://doi.org/10.1145/2382577.2382579" target="_blank" rel="noopener">DOI</a></div>
+<div class="p"><b>Privacy, 2000</b><span>Sweeney. Simple demographics often identify people uniquely. </span><a href="https://dataprivacylab.org/projects/identifiability/paper1.pdf" target="_blank" rel="noopener">PDF</a></div>
+</div></div></section><section id="materiali"><h2>Materiali</h2><div class="links">
+<a class="link" href="slides/Incontro_1_IT.pdf" target="_blank" rel="noopener"><strong>Slide incontro 1</strong><span>Dai dati biologici agli algoritmi (PDF)</span></a>
+<a class="link" href="slides/Incontro_2_IT.pdf" target="_blank" rel="noopener"><strong>Slide incontro 2</strong><span>Come impara un computer (PDF)</span></a>
+<a class="link" href="attivita/Schede_attivita_studenti.pdf" target="_blank" rel="noopener"><strong>Schede A, B, C, D</strong><span>Da stampare o compilare al PC (PDF)</span></a>
+<a class="link" href="attivita/sequenze_attivita_B.txt" target="_blank" rel="noopener"><strong>Sequenze per la sfida B</strong><span>File di testo</span></a>
+</div></section><section id="feedback"><h2>Feedback</h2>
+<div class="bigcard"><p style="margin:0 0 6px;font-size:20px;font-weight:800">Com'è andata?</p>
+<p style="margin:0 0 14px">Due minuti, anonimo. Mi aiuta a migliorare gli incontri e a capire che cosa ti è servito.</p>
+<a class="bigbtn" href="feedback.html" style="text-decoration:none;display:inline-block">Compila il questionario</a></div></section><section id="scrivimi"><h2>Scrivimi</h2>
+<p>Vuoi un consiglio su università o lavoro, hai una curiosità o un'idea? Scrivimi. Rispondo a tutti.</p>
+<div class="contact"><a href="https://martinaa1408.github.io/lab/" target="_blank" rel="noopener" aria-label="Lab · Martina Castellucci, apri il Lab"><img src="assets/badge-lab.svg" alt="Badge: Lab, Martina Castellucci" height="72"></a>
+<p style="margin:12px 0 4px"><a class="bigbtn" href="mailto:martycastellucci@gmail.com?subject=Dopo%20gli%20incontri%20al%20Liceo%20Ferrari">Scrivimi una email</a><a class="bigbtn" href="https://www.linkedin.com/in/martina-castellucci-45b120298" target="_blank" rel="noopener">LinkedIn</a></p></div></section></main>
+<footer>Realizzato da Martina Castellucci. I dati delle sfide sono inventati a scopo didattico. <a href="https://github.com/Martinaa1408/liceo-ferrari-bioinformatics" style="color:var(--accent)">Codice su GitHub</a>.</footer>
+</div>
+<script>(function(){
+  function copyText(text, btn){
+    function ok(){ if(btn){var o=btn.textContent;btn.textContent='Copiato';setTimeout(function(){btn.textContent=o},1400);} }
+    try{navigator.clipboard.writeText(text).then(ok,function(){fallback(text);ok();});}catch(e){fallback(text);ok();}
   }
-  function fallback(text){
-    var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();
-    try{document.execCommand('copy');}catch(e){}
-    document.body.removeChild(ta);
-  }
-  document.querySelectorAll('.copy').forEach(function(b){
-    b.addEventListener('click',function(){copyText(document.getElementById(b.dataset.target).innerText,b);});
-  });
-  document.getElementById('copyall').addEventListener('click',function(){
-    copyText(document.getElementById('allcode').textContent,null);
-    document.getElementById('copyallmsg').textContent='Copied. Paste it into one Colab cell and run it.';
-  });
+  function fallback(text){var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);}
+  document.querySelectorAll('.copy').forEach(function(b){b.addEventListener('click',function(){copyText(document.getElementById(b.dataset.target).innerText,b);});});
+  var ca=document.getElementById('copyall');
+  if(ca)ca.addEventListener('click',function(){copyText(document.getElementById('allcode').textContent,null);document.getElementById('copyallmsg').textContent='Copiato. Incollalo in una cella di Colab ed esegui.';});
+  function save(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function load(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function setZoom(z){document.documentElement.style.setProperty('--zoom',z);document.querySelectorAll('[data-zoom]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.zoom===String(z))});save('tkZoom',z)}
+  function setTheme(t){var r=document.documentElement;if(t==='auto')r.removeAttribute('data-theme');else r.setAttribute('data-theme',t);document.querySelectorAll('[data-theme-set]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.themeSet===t)});save('tkTheme',t)}
+  document.querySelectorAll('[data-zoom]').forEach(function(b){b.addEventListener('click',function(){setZoom(b.dataset.zoom)})});
+  document.querySelectorAll('[data-theme-set]').forEach(function(b){b.addEventListener('click',function(){setTheme(b.dataset.themeSet)})});
+  var z0=load('tkZoom');if(z0)setZoom(z0);var t0=load('tkTheme');if(t0)setTheme(t0);
   var answered=0,correct=0,total=document.querySelectorAll('.q').length;
   document.querySelectorAll('.q').forEach(function(q){
     var ans=+q.dataset.ans;
-    q.querySelectorAll('.opt').forEach(function(b){
-      b.addEventListener('click',function(){
-        var i=+b.dataset.i;
-        q.querySelectorAll('.opt').forEach(function(x){x.disabled=true; if(+x.dataset.i===ans)x.classList.add('right');});
-        if(i!==ans)b.classList.add('wrong');
-        var w=q.querySelector('.why');w.hidden=false;
-        w.querySelector('.verdict').textContent=i===ans?'Right.':'Not quite. The answer is '+'ABCD'[ans]+'.';
-        answered++; if(i===ans)correct++;
-        document.getElementById('score').textContent=answered+' / '+total+' answered, '+correct+' correct';
-      });
-    });
+    q.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){
+      var i=+b.dataset.i;
+      q.querySelectorAll('.opt').forEach(function(x){x.disabled=true;if(+x.dataset.i===ans)x.classList.add('right');});
+      if(i!==ans)b.classList.add('wrong');
+      var w=q.querySelector('.why');w.hidden=false;
+      w.querySelector('.verdict').textContent=i===ans?'Giusto.':'Non proprio. La risposta è '+'ABCD'[ans]+'.';
+      answered++;if(i===ans)correct++;
+      document.getElementById('score').textContent=answered+' / '+total+' risposte, '+correct+' giuste';
+    });});
   });
-})();
-</script>
-
-<div id="ac" class="ac" hidden aria-modal="true" role="dialog" aria-label="Team answer card">
+})();</script>
+<div id="ac" class="ac" hidden aria-modal="true" role="dialog" aria-label="Cartellino risposta squadra">
   <div class="ac-pick">
     <div class="ac-top">
-      <input id="ac-team" class="ac-team" maxlength="18" placeholder="Team name" aria-label="Team name">
-      <button class="ac-x" id="ac-close" aria-label="Close">Close</button>
+      <input id="ac-team" class="ac-team" maxlength="18" placeholder="Nome squadra" aria-label="Nome squadra">
+      <button class="ac-x" id="ac-close" aria-label="Chiudi">Chiudi</button>
     </div>
     <div class="ac-grid">
       <button class="ac-b" data-l="A" style="--c:#2EC4A6">A</button>
@@ -542,10 +408,10 @@ for row in db.execute(&quot;&quot;&quot;
       <button class="ac-b" data-l="C" style="--c:#F2B33D">C</button>
       <button class="ac-b" data-l="D" style="--c:#F2664A">D</button>
     </div>
-    <p class="ac-hint">Pick your answer, then turn the screen to the stage.</p>
+    <p class="ac-hint">Scegli la risposta, poi gira lo schermo verso il palco.</p>
   </div>
-  <button class="ac-show" id="ac-show" hidden aria-label="Tap to change answer">
-    <span class="ac-name" id="ac-name"></span><span class="ac-L" id="ac-L"></span><span class="ac-sub">Tap to change</span>
+  <button class="ac-show" id="ac-show" hidden aria-label="Tocca per cambiare risposta">
+    <span class="ac-name" id="ac-name"></span><span class="ac-L" id="ac-L"></span><span class="ac-sub">Tocca per cambiare</span>
   </button>
 </div>
 <style>
@@ -586,5 +452,4 @@ for row in db.execute(&quot;&quot;&quot;
   if(location.hash==='#card'||ac.dataset.auto==='1')openCard();
 })();
 </script>
-
 </body></html>

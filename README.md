@@ -2,8 +2,7 @@
 
 Materials from two sessions on bioinformatics and data science at Liceo Scientifico "Enzo Ferrari", Cesenatico (quinta, Scienze applicate), November 2026.
 
-**Toolkit in italiano:** https://martinaa1408.github.io/liceo-ferrari-bioinformatics/it/
-**Toolkit in inglese:** https://martinaa1408.github.io/liceo-ferrari-bioinformatics/
+**Toolkit (italiano):** https://martinaa1408.github.io/liceo-ferrari-bioinformatics/
 **Lab (test ed esplorazione di strumenti):** https://martinaa1408.github.io/lab/
 
 Incontri: 21 novembre 2026 (8-11) e 28 novembre 2026 (10-13).
@@ -21,8 +20,8 @@ No installation. You need a browser and a Google account.
 ## Contents
 
 ```
-it/index.html          toolkit in italiano (versione semplificata, accessibile)
-index.html             toolkit in inglese, con link alla versione italiana
+index.html             toolkit in italiano (sfide, aiuti, codici, quiz, extra)
+it/index.html          rimanda alla pagina principale (per i QR gia stampati)
 feedback.html          questionario finale
 dashboard.html         dashboard con risposte, gradimento e suggerimenti
 apps_script/Code.gs    backend Google Apps Script del questionario

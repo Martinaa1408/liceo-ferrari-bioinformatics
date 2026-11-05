@@ -146,6 +146,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 .grp .note{margin:0 0 6px}
 .bigcard{background:var(--surface);border:2px solid var(--g);border-radius:16px;padding:22px;margin-top:14px}
 section{scroll-margin-top:64px}
+.mailform{max-width:520px;margin:14px auto 0;text-align:left;display:grid;gap:6px}
+.mailform label{font-weight:700;font-size:15px;margin-top:6px}
+.mailform input[type=text],.mailform input[type=email],.mailform textarea{font:inherit;width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.mailform .bigbtn{justify-self:start;margin-top:10px;cursor:pointer;border:0}
 main p a,main li a,main details a,.papers a{color:var(--accent);font-weight:600}
 </style>
 </head>
@@ -363,7 +367,16 @@ Precisione: 0.4</div></div><details><summary>Che cosa fa, riga per riga</summary
 <a class="bigbtn" href="feedback.html" style="text-decoration:none;display:inline-block">Compila il questionario</a></div></section><section id="scrivimi"><h2>Scrivimi</h2>
 <p>Vuoi un consiglio su università o lavoro, hai una curiosità o un'idea? Scrivimi. Rispondo a tutti.</p>
 <div class="contact"><a href="https://martinaa1408.github.io/lab/" target="_blank" rel="noopener" aria-label="Lab · Martina Castellucci, apri il Lab"><img src="assets/badge-lab.svg" alt="Badge: Lab, Martina Castellucci" height="72"></a>
-<p style="margin:12px 0 4px"><a class="bigbtn" href="mailto:martycastellucci@gmail.com?subject=Dopo%20gli%20incontri%20al%20Liceo%20Ferrari">Scrivimi una email</a><a class="bigbtn" href="https://www.linkedin.com/in/martina-castellucci-45b120298" target="_blank" rel="noopener">LinkedIn</a></p></div></section></main>
+<form id="mailform" class="mailform" action="https://formsubmit.co/martycastellucci@gmail.com" method="POST">
+<label for="mf-nome">Il tuo nome (facoltativo)</label><input id="mf-nome" name="nome" type="text" autocomplete="given-name">
+<label for="mf-email">La tua email, per la risposta</label><input id="mf-email" name="email" type="email" required autocomplete="email">
+<label for="mf-msg">Il tuo messaggio</label><textarea id="mf-msg" name="messaggio" rows="5" required></textarea>
+<input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+<input type="hidden" name="_subject" value="Messaggio dal toolkit del Liceo Ferrari"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_next" value="https://martinaa1408.github.io/liceo-ferrari-bioinformatics/grazie.html">
+<button type="submit" class="bigbtn">Invia il messaggio</button>
+<p id="mf-status" role="status" aria-live="polite" class="note"></p>
+<p class="note">L'email serve solo per risponderti. Non la uso per altro. Preferisci il tuo programma di posta? Scrivi a <a href="mailto:martycastellucci@gmail.com?subject=Dopo%20gli%20incontri%20al%20Liceo%20Ferrari">martycastellucci@gmail.com</a> oppure usa <a href="https://www.linkedin.com/in/martina-castellucci-45b120298" target="_blank" rel="noopener">LinkedIn</a>.</p>
+</form></div></section></main>
 <footer>Realizzato da Martina Castellucci. I dati delle sfide sono inventati a scopo didattico. <a href="https://github.com/Martinaa1408/liceo-ferrari-bioinformatics" style="color:var(--accent)">Codice su GitHub</a>.</footer>
 </div>
 <script>(function(){
@@ -382,6 +395,19 @@ Precisione: 0.4</div></div><details><summary>Che cosa fa, riga per riga</summary
   document.querySelectorAll('[data-zoom]').forEach(function(b){b.addEventListener('click',function(){setZoom(b.dataset.zoom)})});
   document.querySelectorAll('[data-theme-set]').forEach(function(b){b.addEventListener('click',function(){setTheme(b.dataset.themeSet)})});
   var z0=load('tkZoom');if(z0)setZoom(z0);var t0=load('tkTheme');if(t0)setTheme(t0);
+  var mf=document.getElementById('mailform');
+  if(mf)mf.addEventListener('submit',function(e){
+    e.preventDefault();var st=document.getElementById('mf-status'),btn=mf.querySelector('button');
+    if(mf.elements._honey.value)return;
+    btn.disabled=true;st.textContent='Invio in corso...';
+    var fd=new FormData(mf);
+    fetch('https://formsubmit.co/ajax/martycastellucci@gmail.com',{method:'POST',headers:{'Accept':'application/json'},body:fd})
+      .then(function(r){return r.json()}).then(function(j){
+        if(j&&(j.success===true||j.success==='true')){st.textContent='Messaggio inviato. Ti rispondo presto.';mf.reset();}
+        else{throw new Error('no')}
+      }).catch(function(){st.textContent='Non sono riuscita a inviare. Scrivimi direttamente a martycastellucci@gmail.com.';})
+      .then(function(){btn.disabled=false});
+  });
   var answered=0,correct=0,total=document.querySelectorAll('.q').length;
   document.querySelectorAll('.q').forEach(function(q){
     var ans=+q.dataset.ans;

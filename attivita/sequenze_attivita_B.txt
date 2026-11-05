@@ -1,0 +1,14 @@
+Sequenze per la sfida B (scheda B). Sono tratti iniziali di proteine reali (fonte: UniProt).
+Copia una sequenza alla volta in Protein BLAST: blast.ncbi.nlm.nih.gov
+
+Sequenza 1
+FVNQHLCGSHLVEALYLVCGERGFFYTPKT
+
+Sequenza 2
+MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGK
+
+Sequenza 3
+MVHLTPEEKSAVTALWGKVNVDEVGGEALG
+
+Sequenza 4
+MVHLTPVEKSAVTALWGKVNVDEVGGEALG

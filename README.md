@@ -2,7 +2,11 @@
 
 Materials from two sessions on bioinformatics and data science at Liceo Scientifico "Enzo Ferrari", Cesenatico (quinta, Scienze applicate), November 2026.
 
-**Toolkit page:** https://martinaa1408.github.io/liceo-ferrari-bioinformatics/
+**Toolkit in italiano:** https://martinaa1408.github.io/liceo-ferrari-bioinformatics/it/
+**Toolkit in inglese:** https://martinaa1408.github.io/liceo-ferrari-bioinformatics/
+**Lab (test ed esplorazione di strumenti):** https://martinaa1408.github.io/lab/
+
+Incontri: 21 novembre 2026 (8-11) e 28 novembre 2026 (10-13).
 
 ## Run the code
 
@@ -17,11 +21,25 @@ No installation. You need a browser and a Google account.
 ## Contents
 
 ```
-index.html     toolkit page (code, quiz, oral exam ideas, links)
-notebooks/     Colab notebooks
-slides/        slides of both sessions and "My path" (PDF)
-qr/            QR code to the toolkit page
+it/index.html          toolkit in italiano (versione semplificata, accessibile)
+index.html             toolkit in inglese, con link alla versione italiana
+feedback.html          questionario finale
+dashboard.html         dashboard con risposte, gradimento e suggerimenti
+apps_script/Code.gs    backend Google Apps Script del questionario
+attivita/              schede attivita per gli studenti (senza soluzioni)
+notebooks/             notebook Colab
+slides/                slide degli incontri (PPTX e PDF)
+qr/                    codici QR
+assets/                immagini e badge
 ```
+
+## Questionario e dashboard
+
+1. Crea un Google Sheet, apri Estensioni, Apps Script e incolla `apps_script/Code.gs`.
+2. Cambia la costante `TOKEN` con una parola d'ordine tua.
+3. Distribuisci come app web (esegui come te, accesso a chiunque) e copia l'URL che termina con `/exec`.
+4. Incolla l'URL in `ENDPOINT` dentro `feedback.html` e `dashboard.html`.
+5. Apri `dashboard.html`, inserisci il token. Con `dashboard.html#demo` vedi dati di prova.
 
 ## Topics
 

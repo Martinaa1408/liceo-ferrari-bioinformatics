@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Dashboard feedback</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{--bg:#F3F7F7;--surface:#FFFFFF;--ink:#10252C;--muted:#4E6870;--line:#D5E2E4;--accent:#1E9E86;--a:#1E9E86;--c:#3A74C4;--g:#C98A12;--t:#D6512F;--body:"Manrope",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1A20;--surface:#112A32;--ink:#EAF4F4;--muted:#9DB5BA;--line:#23434C;--accent:#2EC4A6;--a:#2EC4A6;--c:#4F8FE0;--g:#F2B33D;--t:#F2664A;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.5}
+.wrap{max-width:980px;margin:0 auto;padding:28px 16px 64px}
+.dna{display:flex;gap:5px;margin-bottom:12px}.dna i{width:14px;height:14px;display:block}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+h1{font-weight:800;font-size:clamp(28px,5vw,40px);line-height:1.1;margin:.25em 0 .2em}
+h2{font-size:18px;margin:0 0 10px}
+.lead{color:var(--muted);margin:0 0 16px;max-width:64ch}
+.panel,.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.setup{display:grid;gap:10px;grid-template-columns:1fr 220px auto auto;align-items:end}
+@media (max-width:760px){.setup{grid-template-columns:1fr}}
+label{display:grid;gap:4px;font-weight:700;font-size:14px}
+input{font:500 15px var(--body);color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:9px 11px;width:100%}
+button{font:700 15px var(--body);background:var(--accent);color:var(--bg);border:0;border-radius:8px;padding:10px 16px;cursor:pointer;min-height:42px}
+button.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.kpis{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:16px 0}
+.kpi .n{font-size:34px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi .l{color:var(--muted);font-size:14px}
+.kpi.a .n{color:var(--a)}.kpi.c .n{color:var(--c)}.kpi.g .n{color:var(--g)}.kpi.t .n{color:var(--t)}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.bars{display:grid;gap:6px}
+.bar{display:grid;grid-template-columns:130px 1fr 36px;gap:8px;align-items:center;font-size:14px}
+.bar .t{height:16px;background:var(--bg);border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.bar .t i{display:block;height:100%;background:var(--accent)}
+.bar b{text-align:right;font-variant-numeric:tabular-nums}
+.vote .bar{grid-template-columns:28px 1fr 36px}
+.list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.list li{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.list .m{font-size:12px;color:var(--muted);font-family:var(--mono)}
+.empty{color:var(--muted);font-size:14px;margin:0}
+#msg{margin:10px 0 0;font-size:14px}
+.err{color:var(--t)}
+.demo{display:inline-block;background:var(--g);color:#10252C;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:6px;margin-left:8px;vertical-align:middle}
+.note{color:var(--muted);font-size:13px;margin-top:20px}
+</style></head><body><main class="wrap" id="main">
+<div class="dna" aria-hidden="true"><i style="background:#2EC4A6"></i><i style="background:#4F8FE0"></i><i style="background:#F2B33D"></i><i style="background:#F2664A"></i></div>
+<div class="eyebrow">Liceo "Enzo Ferrari", Cesenatico · solo per me</div>
+<h1>Dashboard feedback <span id="demotag" class="demo" hidden>Dati di esempio</span></h1>
+<p class="lead">Quanti questionari sono arrivati, quanto sono piaciuti gli incontri e che cosa suggeriscono gli studenti. I dati restano nel tuo Foglio Google: questa pagina li legge solo con il tuo token e non li salva.</p>
+
+<form class="panel setup" id="setup" autocomplete="off">
+  <label>URL dell'app web (finisce con /exec)<input id="url" type="url" placeholder="https://script.google.com/macros/s/.../exec" required></label>
+  <label>Token<input id="token" type="password" placeholder="il tuo token" required></label>
+  <button type="submit">Carica</button>
+  <button type="button" class="ghost" id="demo">Prova con dati di esempio</button>
+</form>
+<p id="msg" role="status" aria-live="polite"></p>
+
+<section id="out" hidden>
+  <div class="kpis" id="kpis"></div>
+  <div class="grid">
+    <div class="card vote"><h2>Voto all'incontro (1-10)</h2><div class="bars" id="b-vote"></div></div>
+    <div class="card"><h2>Chiarezza delle spiegazioni (1-5)</h2><div class="bars vote" id="b-clar"></div></div>
+    <div class="card"><h2>Interesse dopo gli incontri (1-5)</h2><div class="bars vote" id="b-int"></div></div>
+    <div class="card"><h2>Che cosa è piaciuto di più</h2><div class="bars" id="b-liked"></div></div>
+    <div class="card"><h2>Pensano a una laurea in quest'area?</h2><div class="bars" id="b-deg"></div></div>
+    <div class="card"><h2>Chi ha risposto</h2><div class="bars" id="b-meet"></div></div>
+  </div>
+  <h2 style="margin-top:22px">Cosa cambierebbero</h2><ul class="list" id="changes"></ul>
+  <h2 style="margin-top:22px">Domande per te</h2><ul class="list" id="questions"></ul>
+  <p class="note" id="stamp"></p>
+</section>
+</main>
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  function save(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function load(k){try{return localStorage.getItem(k)||''}catch(e){return ''}}
+  $('url').value=load('fbUrl');$('token').value=load('fbToken');
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]})}
+  function bars(el,obj,order,max){
+    var keys=order||Object.keys(obj).sort(function(a,b){return obj[b]-obj[a]});
+    var m=max||Math.max.apply(null,keys.map(function(k){return obj[k]||0}).concat([1]));
+    el.innerHTML=keys.map(function(k){var v=obj[k]||0;return '<div class="bar"><span>'+esc(k)+'</span><span class="t"><i style="width:'+(v/m*100)+'%"></i></span><b>'+v+'</b></div>'}).join('')||'<p class="empty">Nessun dato.</p>';
+  }
+  function rng(n){var a=[];for(var i=1;i<=n;i++)a.push(String(i));return a}
+  function list(el,items,withMail){
+    el.innerHTML=items.length?items.slice().reverse().map(function(x){return '<li><div class="m">'+esc(x.date)+' · '+esc(x.meeting||'')+(withMail&&x.email?' · '+esc(x.email):'')+'</div>'+esc(x.text)+'</li>'}).join(''):'<li class="empty">Ancora niente.</li>';
+  }
+  function share(dist,from){var t=0,s=0;Object.keys(dist).forEach(function(k){t+=dist[k];if(+k>=from)s+=dist[k]});return t?Math.round(s/t*100):null}
+  function render(d,demo){
+    $('demotag').hidden=!demo;$('out').hidden=false;
+    var sat=share(d.voteDist||{},8),deg=d.degree||{},dy=(deg['Si']||0)+(deg['Forse']||0),dt=Object.keys(deg).reduce(function(s,k){return s+deg[k]},0);
+    var k=[['a',d.total,'questionari compilati'],['c',d.avgVote==null?'-':d.avgVote.toFixed(1),'voto medio su 10'],['g',sat==null?'-':sat+'%','voti da 8 in su'],['t',d.avgClarity==null?'-':d.avgClarity.toFixed(1),'chiarezza su 5'],['a',d.avgInterest==null?'-':d.avgInterest.toFixed(1),'interesse su 5'],['c',dt?Math.round(dy/dt*100)+'%':'-','pensa a una laurea (sì o forse)']];
+    $('kpis').innerHTML=k.map(function(x){return '<div class="card kpi '+x[0]+'"><div class="n">'+x[1]+'</div><div class="l">'+x[2]+'</div></div>'}).join('');
+    bars($('b-vote'),d.voteDist||{},rng(10));bars($('b-clar'),d.clarityDist||{},rng(5));bars($('b-int'),d.interestDist||{},rng(5));
+    bars($('b-liked'),d.liked||{});bars($('b-deg'),deg);bars($('b-meet'),d.byMeeting||{});
+    list($('changes'),d.changes||[],false);list($('questions'),d.questions||[],true);
+    $('stamp').textContent='Aggiornato il '+new Date().toLocaleString('it-IT')+(demo?'. I numeri sono inventati.':'.');
+  }
+  $('setup').addEventListener('submit',function(e){
+    e.preventDefault();var u=$('url').value.trim(),t=$('token').value.trim(),m=$('msg');m.className='';m.textContent='Carico...';
+    fetch(u+(u.indexOf('?')>-1?'&':'?')+'token='+encodeURIComponent(t)).then(function(r){return r.json()}).then(function(d){
+      if(d.error){m.className='err';m.textContent='Token non valido.';return}
+      save('fbUrl',u);save('fbToken',t);m.textContent='';render(d,false);
+    }).catch(function(){m.className='err';m.textContent='Non riesco a leggere i dati. Controlla l\'URL e che l\'app web sia distribuita con accesso "Chiunque".'});
+  });
+  $('demo').addEventListener('click',function(){
+    $('msg').textContent='';
+    render({total:64,byMeeting:{'Incontro 1':22,'Incontro 2':18,'Entrambi':24},avgVote:8.4,voteDist:{4:1,5:2,6:4,7:9,8:16,9:20,10:12},avgClarity:4.3,clarityDist:{3:5,4:23,5:36},avgInterest:3.9,interestDist:{1:3,2:6,3:14,4:22,5:19},
+      liked:{'Quiz a squadre':41,'Sfide':35,'Codice dal vivo':14,'Caso Neotron':29,'Universita e lavoro':33,"Idee per l'orale":18},degree:{'Si':9,'Forse':21,'No':14,'Non ho ancora deciso':20},
+      changes:[{date:'21/11 11:02',meeting:'Incontro 1',text:'Più tempo per la sfida B.'},{date:'28/11 13:05',meeting:'Incontro 2',text:'Il codice era difficile, meglio più esempi dal vivo.'}],
+      questions:[{date:'28/11 13:07',meeting:'Incontro 2',text:'Quali esami di Bioinformatica sono più difficili?',email:'esempio@studenti.it'}]},true);
+  });
+  if(location.hash==='#demo')$('demo').click();
+})();
+</script></body></html>
